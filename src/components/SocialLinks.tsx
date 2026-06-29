@@ -45,7 +45,7 @@ export function SocialLinks({ className = "", size = "md" }: SocialLinksProps) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${site.name} on ${label}`}
-              className={`inline-flex items-center justify-center rounded-sm border border-ss-border bg-ss-cream/80 text-ss-brown transition hover:border-ss-rust/50 hover:bg-ss-gold/15 hover:text-ss-rust ${sizeClasses[size]}`}
+              className={`inline-flex items-center justify-center rounded-2xl border border-ss-border bg-ss-surface/80 text-ss-cream transition hover:border-ss-gold/50 hover:bg-ss-gold-soft hover:text-ss-gold ${sizeClasses[size]}`}
             >
               <Icon className={iconSizes[size]} aria-hidden />
             </a>

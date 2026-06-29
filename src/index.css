@@ -1,23 +1,25 @@
-@import url("https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap");
 @import "tailwindcss";
 
+/* Warm walnut tavern — vintage Americana with modern band-site polish */
 @theme {
   --font-sans: "Libre Baskerville", Georgia, "Times New Roman", serif;
   --font-display: "Playfair Display", Georgia, serif;
   --font-accent: "IM Fell English", Georgia, serif;
 
+  --color-ss-bg: #16120e;
+  --color-ss-surface: #211b15;
+  --color-ss-elevated: #2c241c;
+  --color-ss-border: #4a3d32;
   --color-ss-cream: #f4ead5;
+  --color-ss-cream-muted: rgba(244, 234, 213, 0.62);
   --color-ss-parchment: #e8dcc4;
-  --color-ss-paper: #ddd0b8;
-  --color-ss-ink: #2c2419;
-  --color-ss-brown: #3d2b1f;
-  --color-ss-brown-dark: #2a1f18;
-  --color-ss-rust: #8b4513;
-  --color-ss-gold: #c9a227;
-  --color-ss-gold-dark: #9a7b1a;
-  --color-ss-sage: #5c6b52;
-  --color-ss-muted: #6b5d4f;
-  --color-ss-border: rgba(61, 43, 31, 0.18);
+  --color-ss-gold: #d4a83a;
+  --color-ss-gold-muted: #a67d24;
+  --color-ss-gold-soft: rgba(212, 168, 58, 0.14);
+  --color-ss-rust: #c47a52;
+  --color-ss-rust-muted: #8f5a3c;
+  --color-ss-wood: #3d2b1f;
+  --color-ss-muted: rgba(244, 234, 213, 0.5);
 }
 
 @layer base {
@@ -26,13 +28,42 @@
   }
 
   body {
-    @apply font-sans antialiased text-ss-ink;
-    background: var(--color-ss-cream);
+    @apply font-sans antialiased text-ss-cream overflow-x-hidden;
+    background-color: var(--color-ss-bg);
     min-height: 100vh;
+    position: relative;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 90% 60% at 50% -10%, rgba(212, 168, 58, 0.14) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 40% at 100% 80%, rgba(196, 122, 82, 0.1) 0%, transparent 50%),
+      radial-gradient(ellipse 40% 35% at 0% 60%, rgba(61, 43, 31, 0.35) 0%, transparent 50%),
+      linear-gradient(180deg, #1a1410 0%, #16120e 45%, #120e0b 100%);
+  }
+
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.35;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  }
+
+  #root {
+    position: relative;
+    z-index: 0;
   }
 
   ::selection {
-    @apply bg-ss-gold/30 text-ss-brown-dark;
+    @apply bg-ss-gold/30 text-ss-cream;
   }
 }
 
@@ -52,63 +83,26 @@
     font-family: var(--font-display);
     letter-spacing: 0.02em;
     line-height: 1.1;
-    @apply text-4xl text-ss-brown sm:text-5xl;
+    @apply text-3xl text-ss-cream md:text-4xl;
   }
 
   .ss-card {
-    @apply rounded-sm border border-ss-border bg-ss-parchment/90 shadow-lg shadow-ss-brown/10;
+    @apply rounded-2xl border border-ss-border/80 bg-ss-elevated/75 shadow-xl backdrop-blur-sm;
     box-shadow:
-      0 1px 0 rgba(255, 255, 255, 0.4) inset,
-      0 4px 20px rgba(61, 43, 31, 0.12);
+      0 1px 0 rgba(255, 255, 255, 0.04) inset,
+      0 12px 40px rgba(0, 0, 0, 0.35);
   }
 
   .ss-btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-sm px-6 py-3 text-sm font-semibold transition;
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-3 text-sm font-semibold transition;
   }
 
   .ss-btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-sm px-6 py-3 text-sm font-semibold transition bg-ss-brown text-ss-cream hover:bg-ss-brown-dark;
-    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-3 text-sm font-semibold transition bg-ss-gold text-ss-bg shadow-lg shadow-ss-gold/20 hover:bg-ss-parchment;
   }
 
   .ss-btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-sm px-6 py-3 text-sm font-semibold transition border border-ss-border bg-ss-cream/60 text-ss-brown hover:border-ss-rust/40 hover:bg-ss-parchment;
-  }
-
-  .ss-paper-bg {
-    background-color: var(--color-ss-cream);
-    background-image:
-      url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E"),
-      linear-gradient(
-        175deg,
-        rgba(232, 220, 196, 0.9) 0%,
-        rgba(244, 234, 213, 0.95) 35%,
-        rgba(221, 208, 184, 0.85) 100%
-      );
-  }
-
-  .ss-wood-frame {
-    background-image:
-      repeating-linear-gradient(
-        90deg,
-        transparent,
-        transparent 3px,
-        rgba(61, 43, 31, 0.03) 3px,
-        rgba(61, 43, 31, 0.03) 4px
-      ),
-      linear-gradient(
-        180deg,
-        rgba(139, 69, 19, 0.06) 0%,
-        transparent 30%,
-        rgba(61, 43, 31, 0.04) 100%
-      );
-  }
-
-  .ss-vintage-border {
-    border: 1px solid var(--color-ss-border);
-    box-shadow:
-      inset 0 0 0 1px rgba(255, 255, 255, 0.35),
-      0 2px 8px rgba(61, 43, 31, 0.08);
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-3 text-sm font-semibold transition border border-ss-border bg-ss-surface/80 text-ss-cream hover:border-ss-gold/45 hover:bg-ss-elevated;
   }
 
   .ss-ornament {
@@ -120,6 +114,10 @@
       transparent
     );
     height: 1px;
-    opacity: 0.5;
+    opacity: 0.45;
+  }
+
+  .ss-page-shell {
+    @apply px-4 py-14 md:py-20;
   }
 }
