@@ -82,11 +82,6 @@ export function EPKPage() {
           <div>
             <h2 className="ss-section-heading">About the duo</h2>
             <p className="mt-4 text-lg leading-relaxed text-ss-cream">{bio.short}</p>
-            {bio.long.map((paragraph) => (
-              <p key={paragraph.slice(0, 40)} className="mt-4 leading-relaxed text-ss-cream-muted">
-                {paragraph}
-              </p>
-            ))}
           </div>
           <aside className="ss-card h-fit p-6">
             <h3 className="text-sm font-semibold uppercase tracking-widest text-ss-gold">Lineup</h3>
