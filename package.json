@@ -5,9 +5,9 @@
   "type": "module",
   "homepage": "https://dbaileyfam.github.io/sawdustandstrings/",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite index.dev.html",
     "build": "tsc -b && vite build",
-    "postbuild": "cp dist/index.html dist/404.html",
+    "postbuild": "mv dist/index.dev.html dist/index.html && cp dist/index.html dist/404.html",
     "build:pages": "VITE_BASE_PATH=/sawdustandstrings/ npm run build",
     "lint": "eslint .",
     "preview": "vite preview",
