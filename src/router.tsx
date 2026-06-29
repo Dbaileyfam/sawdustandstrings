@@ -1,7 +1,6 @@
-import { createBrowserRouter } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { HomePage } from "@/pages/HomePage";
-import { AboutPage } from "@/pages/AboutPage";
 import { SetlistPage } from "@/pages/SetlistPage";
 import { ShowsPage } from "@/pages/ShowsPage";
 import { ContactPage } from "@/pages/ContactPage";
@@ -18,7 +17,7 @@ export const router = createBrowserRouter(
       element: <Layout />,
       children: [
         { index: true, element: <HomePage /> },
-        { path: "about", element: <AboutPage /> },
+        { path: "about", element: <Navigate to={routes.home} replace /> },
         { path: "setlist", element: <SetlistPage /> },
         { path: "shows", element: <ShowsPage /> },
         { path: "contact", element: <ContactPage /> },

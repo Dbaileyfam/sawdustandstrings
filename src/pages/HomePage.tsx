@@ -1,19 +1,13 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Calendar, Guitar, MapPin, Music2, Users } from "lucide-react";
-import { bio, influences, setlistHighlights, site } from "@/content/site";
+import { ArrowRight, Calendar, Guitar, MapPin, Music2 } from "lucide-react";
+import { bio, influences, quickFacts, setlistHighlights, site } from "@/content/site";
 import { routes } from "@/lib/routes";
 import { usePageTitle } from "@/lib/usePageTitle";
 import { fadeUp } from "@/lib/motion";
 import { SocialLinks } from "@/components/SocialLinks";
 
 const tiles = [
-  {
-    to: routes.about,
-    title: "About",
-    body: "Meet the duo, their sound, and who they cover.",
-    icon: Users,
-  },
   {
     to: routes.setlist,
     title: "Setlist",
@@ -148,28 +142,85 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="border-y border-ss-border/60 bg-ss-surface/35 px-4 py-16 md:py-20">
-        <div className="mx-auto max-w-3xl">
-          <motion.h2 className="ss-section-heading" {...fadeUp}>
-            About the duo
-          </motion.h2>
-          <motion.p
-            className="mt-6 text-base leading-relaxed text-ss-cream-muted md:text-lg"
-            {...fadeUp}
-            transition={{ ...fadeUp.transition, delay: 0.06 }}
-          >
-            {bio.long[0]}
-          </motion.p>
-          <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.1 }}>
-            <Link
-              to={routes.about}
-              className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-ss-gold transition hover:text-ss-cream"
-            >
-              Read our full story
-              <ArrowRight className="h-4 w-4" aria-hidden />
+      <section
+        id="about"
+        className="scroll-mt-24 border-y border-ss-border/60 bg-ss-surface/35 px-4 py-16 md:py-20"
+      >
+        <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1fr_300px]">
+          <motion.div {...fadeUp}>
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-ss-gold-muted">
+              The duo
+            </p>
+            <h2 className="ss-section-heading mt-3">About Sawdust &amp; Strings</h2>
+            {bio.long.map((paragraph) => (
+              <p
+                key={paragraph.slice(0, 40)}
+                className="mt-4 leading-relaxed text-ss-cream-muted first:mt-6"
+              >
+                {paragraph}
+              </p>
+            ))}
+            <Link to={routes.contact} className="ss-btn-primary mt-8 inline-flex">
+              Book the duo
             </Link>
           </motion.div>
+
+          <aside className="space-y-6">
+            <motion.div className="ss-card p-6" {...fadeUp} transition={{ delay: 0.08 }}>
+              <h3 className="text-sm font-semibold uppercase tracking-widest text-ss-gold-muted">
+                Lineup
+              </h3>
+              <ul className="mt-4 space-y-3">
+                {bio.lineup.map((member) => (
+                  <li
+                    key={member.role}
+                    className="flex items-baseline justify-between gap-3 border-b border-ss-border/50 pb-3 last:border-0 last:pb-0"
+                  >
+                    <span className="font-medium text-ss-cream">{member.name}</span>
+                    <span className="text-right text-sm text-ss-cream-muted">{member.role}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            <motion.div className="ss-card p-6" {...fadeUp} transition={{ delay: 0.12 }}>
+              <h3 className="text-sm font-semibold uppercase tracking-widest text-ss-gold-muted">
+                Quick facts
+              </h3>
+              <ul className="mt-4 space-y-3">
+                {quickFacts.map((fact) => (
+                  <li
+                    key={fact.label}
+                    className="border-b border-ss-border/50 pb-3 last:border-0 last:pb-0"
+                  >
+                    <p className="text-xs font-semibold uppercase tracking-wide text-ss-gold-muted">
+                      {fact.label}
+                    </p>
+                    <p className="mt-1 text-sm text-ss-cream">{fact.value}</p>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </aside>
         </div>
+
+        <motion.div className="mx-auto mt-14 max-w-6xl text-center" {...fadeUp}>
+          <h3 className="text-lg font-semibold text-ss-cream">Influences &amp; style</h3>
+          <p className="mx-auto mt-3 max-w-2xl text-ss-cream-muted">
+            Classic rock legends to modern Americana — familiar songs with an authentic, laid-back
+            feel.
+          </p>
+          <ul className="mt-6 flex flex-wrap justify-center gap-2">
+            {influences.map((artist) => (
+              <li
+                key={artist}
+                className="rounded-full border border-ss-border bg-ss-elevated/80 px-4 py-2 text-sm font-medium text-ss-cream"
+              >
+                {artist}
+              </li>
+            ))}
+          </ul>
+        </motion.div>
       </section>
 
       <section className="px-4 pb-20 pt-12 md:pb-28 md:pt-16">
@@ -180,7 +231,7 @@ export function HomePage() {
           <p className="mx-auto mt-3 max-w-2xl text-center text-ss-cream-muted">
             Breweries, wineries, weddings, and listening rooms across {site.hometown}.
           </p>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {tiles.map((tile, idx) => (
               <motion.div
                 key={tile.to}
@@ -206,20 +257,6 @@ export function HomePage() {
               </motion.div>
             ))}
           </div>
-
-          <motion.div
-            className="mt-12 flex flex-wrap justify-center gap-2"
-            {...fadeUp}
-          >
-            {influences.map((artist) => (
-              <span
-                key={artist}
-                className="rounded-full border border-ss-border bg-ss-surface/60 px-4 py-1.5 text-xs font-medium text-ss-cream-muted"
-              >
-                {artist}
-              </span>
-            ))}
-          </motion.div>
         </div>
       </section>
     </div>
