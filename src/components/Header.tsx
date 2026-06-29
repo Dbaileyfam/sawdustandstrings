@@ -18,7 +18,7 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-ss-border/60 bg-ss-bg/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-ss-border/50 bg-ss-bg/40 backdrop-blur-xl">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 md:py-4">
         <Link
           to={routes.home}

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import {
   motion,
   useMotionTemplate,
@@ -39,73 +40,85 @@ function useWoodMotionEnabled() {
 
 export function WoodBackground() {
   const motionEnabled = useWoodMotionEnabled();
-  const mouseX = useMotionValue(typeof window !== "undefined" ? window.innerWidth / 2 : 0);
-  const mouseY = useMotionValue(typeof window !== "undefined" ? window.innerHeight / 2 : 0);
+  const mouseX = useMotionValue(
+    typeof window !== "undefined" ? window.innerWidth * 0.5 : 0,
+  );
+  const mouseY = useMotionValue(
+    typeof window !== "undefined" ? window.innerHeight * 0.4 : 0,
+  );
   const [motos, setMotos] = useState<SawdustMote[]>([]);
   const idRef = useRef(0);
   const lastRef = useRef({ x: 0, y: 0, t: 0 });
 
-  const springConfig = { stiffness: 48, damping: 22, mass: 0.8 };
+  const springConfig = { stiffness: 55, damping: 20, mass: 0.7 };
   const smoothX = useSpring(mouseX, springConfig);
   const smoothY = useSpring(mouseY, springConfig);
 
-  const grainShiftX = useTransform(smoothX, [0, 2000], [-28, 28]);
-  const grainShiftY = useTransform(smoothY, [0, 1200], [-18, 18]);
-  const plankShiftX = useTransform(smoothX, [0, 2000], [-10, 10]);
+  const grainShiftX = useTransform(smoothX, [0, 2000], [-42, 42]);
+  const grainShiftY = useTransform(smoothY, [0, 1200], [-28, 28]);
+  const plankShiftX = useTransform(smoothX, [0, 2000], [-18, 18]);
 
-  const spotlight = useMotionTemplate`radial-gradient(720px circle at ${smoothX}px ${smoothY}px, rgba(212, 168, 58, 0.16) 0%, rgba(196, 122, 82, 0.07) 34%, transparent 62%)`;
-  const sheen = useMotionTemplate`radial-gradient(420px circle at ${smoothX}px ${smoothY}px, rgba(244, 234, 213, 0.07) 0%, transparent 55%)`;
+  const spotlight = useMotionTemplate`radial-gradient(900px circle at ${smoothX}px ${smoothY}px, rgba(255, 210, 120, 0.38) 0%, rgba(212, 168, 58, 0.18) 28%, rgba(139, 90, 43, 0.08) 48%, transparent 68%)`;
+  const sheen = useMotionTemplate`radial-gradient(520px circle at ${smoothX}px ${smoothY}px, rgba(255, 245, 220, 0.14) 0%, transparent 58%)`;
 
   useEffect(() => {
-    if (!motionEnabled) return;
+    document.body.classList.add("ss-has-wood-bg");
+    return () => document.body.classList.remove("ss-has-wood-bg");
+  }, []);
 
-    const onMove = (e: MouseEvent) => {
-      mouseX.set(e.clientX);
-      mouseY.set(e.clientY);
+  useEffect(() => {
+    const onMove = (e: MouseEvent | TouchEvent) => {
+      const point = "touches" in e ? e.touches[0] : e;
+      if (!point) return;
+
+      mouseX.set(point.clientX);
+      mouseY.set(point.clientY);
+
+      if (!motionEnabled) return;
 
       const now = performance.now();
-      const dx = e.clientX - lastRef.current.x;
-      const dy = e.clientY - lastRef.current.y;
+      const dx = point.clientX - lastRef.current.x;
+      const dy = point.clientY - lastRef.current.y;
       const distance = Math.hypot(dx, dy);
       const elapsed = now - lastRef.current.t;
 
-      if (distance < 14 || elapsed < 22) return;
+      if (distance < 10 || elapsed < 16) return;
 
-      lastRef.current = { x: e.clientX, y: e.clientY, t: now };
+      lastRef.current = { x: point.clientX, y: point.clientY, t: now };
 
-      const burst = Array.from({ length: 2 }).map((_, i) => ({
+      const burst = Array.from({ length: 4 }).map((_, i) => ({
         id: idRef.current++,
-        x: e.clientX + (Math.random() * 18 - 9),
-        y: e.clientY + (Math.random() * 18 - 9),
-        size: 3 + Math.random() * 4,
+        x: point.clientX + (Math.random() * 22 - 11),
+        y: point.clientY + (Math.random() * 22 - 11),
+        size: 4 + Math.random() * 6,
         rotate: Math.random() * 160 - 80,
-        delayMs: i * 40,
+        delayMs: i * 30,
       }));
 
-      setMotos((prev) => [...prev.slice(-24), ...burst]);
+      setMotos((prev) => [...prev.slice(-36), ...burst]);
     };
 
     const trim = window.setInterval(() => {
-      setMotos((prev) => prev.slice(-24));
-    }, 650);
+      setMotos((prev) => prev.slice(-36));
+    }, 500);
 
     window.addEventListener("mousemove", onMove, { passive: true });
+    window.addEventListener("touchmove", onMove, { passive: true });
+
     return () => {
       window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("touchmove", onMove);
       window.clearInterval(trim);
     };
   }, [motionEnabled, mouseX, mouseY]);
 
-  return (
+  const scene = (
     <div className="ss-wood-scene" aria-hidden>
       <div className="ss-wood-base" />
       <motion.div className="ss-wood-planks" style={{ x: plankShiftX }} />
-      <motion.div
-        className="ss-wood-grain"
-        style={{ x: grainShiftX, y: grainShiftY }}
-      />
+      <motion.div className="ss-wood-grain" style={{ x: grainShiftX, y: grainShiftY }} />
       <div className="ss-wood-knots" />
-      <div className="ss-wood-vignette" />
+      <div className="ss-wood-warmth" />
 
       {motionEnabled ? (
         <>
@@ -131,6 +144,11 @@ export function WoodBackground() {
       ) : (
         <div className="ss-wood-spotlight-static" />
       )}
+
+      <div className="ss-wood-vignette" />
     </div>
   );
+
+  if (typeof document === "undefined") return null;
+  return createPortal(scene, document.body);
 }
