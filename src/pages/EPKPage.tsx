@@ -343,7 +343,7 @@ export function EPKPage() {
                 </span>
               </summary>
               <div className="mt-4 rounded-2xl border border-dashed border-ss-border bg-ss-surface/50 p-10 text-center text-sm text-ss-cream-muted">
-                Acoustic duo — two vocal mics, two DI or mic&apos;d guitars. Stage plot image can be
+                Guitar duo — acoustic and electric — two vocal mics, acoustic DI or mic, and electric amp mic or DI. Stage plot image can be
                 added to <code className="text-ss-cream">public/assets/</code>.
               </div>
             </details>

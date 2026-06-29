@@ -5,10 +5,11 @@ import { routes } from "@/lib/routes";
 export const site = {
   name: "Sawdust & Strings",
   tagline: "Timeless songs, honest harmonies, and a laid-back Americana vibe.",
+  format: "Acoustic & electric guitar duo",
   description:
-    "An acoustic guitar duo covering classic rock, singalong favorites, and modern Americana — perfect for breweries, wineries, weddings, and live venues.",
+    "A guitar duo blending acoustic warmth with electric edge — covering classic rock, singalong favorites, and modern Americana. Perfect for breweries, wineries, weddings, and live venues.",
   hometown: "Utah",
-  genre: "Acoustic / Americana",
+  genre: "Americana / Classic Rock",
   formed: null as string | null,
   social: {
     instagram: null as string | null,
@@ -34,9 +35,9 @@ export const navLinks = [
 
 export const bio = {
   short:
-    "From mellow listening rooms to lively patios and packed venues, this acoustic duo delivers a versatile performance that keeps audiences singing along all night long.",
+    "From mellow listening rooms to lively patios and packed venues, Sawdust & Strings blends acoustic and electric guitar into a unique sound that keeps audiences singing along all night long.",
   long: [
-    "Bringing together timeless classics, singalong favorites, and a touch of modern Americana, Sawdust & Strings delivers an evening of music that feels both familiar and fresh. With rich vocal harmonies, acoustic guitars, and a laid-back, authentic vibe, they cover everything from classic rock legends like Pink Floyd, Elton John, Tom Petty, The Allman Brothers, and Creedence Clearwater Revival to newer favorites from artists like Tyler Childers and Goo Goo Dolls.",
+    "Bringing together timeless classics, singalong favorites, and a touch of modern Americana, Sawdust & Strings delivers an evening of music that feels both familiar and fresh. With rich vocal harmonies, one player on acoustic and one on electric, they create a unique blend of warm and driving guitar — covering everything from classic rock legends like Pink Floyd, Elton John, Tom Petty, The Allman Brothers, and Creedence Clearwater Revival to newer favorites from artists like Tyler Childers and Goo Goo Dolls.",
     "Their setlist is packed with crowd-pleasing songs including Bad Moon Rising, Take It Easy, Country Roads, Wish You Were Here, Simple Man, Turn the Page, Heart of Gold, Rocket Man, and many more.",
     "Whether performing in breweries, wineries, restaurants, private events, weddings, or community festivals, they create the perfect soundtrack for audiences who appreciate great songs and genuine musicianship.",
   ],
@@ -77,7 +78,7 @@ export const venues = [
 ] as const;
 
 export const quickFacts = [
-  { label: "Format", value: "Acoustic guitar duo" },
+  { label: "Format", value: site.format },
   { label: "Style", value: "Classic rock & Americana" },
   { label: "Hometown", value: site.hometown },
   { label: "Set length", value: "2–3 hours (flexible)" },

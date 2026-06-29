@@ -33,7 +33,7 @@ export function Header() {
               {site.name}
             </span>
             <span className="hidden text-[0.65rem] font-medium uppercase tracking-[0.22em] text-ss-muted sm:block">
-              Acoustic Duo · {site.hometown}
+              {site.format} · {site.hometown}
             </span>
           </span>
         </Link>

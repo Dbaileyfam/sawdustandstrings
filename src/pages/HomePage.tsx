@@ -55,7 +55,7 @@ export function HomePage() {
               className="text-xs font-semibold uppercase tracking-[0.35em] text-ss-gold-muted"
               {...fadeUp}
             >
-              Acoustic Guitar Duo · {site.hometown}
+              {site.format} · {site.hometown}
             </motion.p>
             <motion.h1
               className="ss-display mt-4 text-5xl text-ss-cream sm:text-6xl md:text-7xl"
