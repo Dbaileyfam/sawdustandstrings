@@ -17,9 +17,10 @@ export const site = {
   },
   featuredVideoId: null as string | null,
   booking: {
-    name: "Sawdust & Strings",
-    email: null as string | null,
-    phone: null as string | null,
+    representative: "801 Family Studios",
+    email: "booking@801familystudios.com",
+    phone: "(801) 918-6782",
+    website: "https://www.801familystudios.com/",
   },
 } as const;
 

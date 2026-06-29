@@ -377,33 +377,33 @@ export function EPKPage() {
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="ss-section-heading">Booking &amp; press contact</h2>
           <p className="mt-4 text-ss-cream-muted">
-            For breweries, wineries, weddings, private events, and media inquiries.
+            {site.name} is represented by {site.booking.representative} for breweries,
+            wineries, weddings, private events, and media inquiries.
           </p>
           <address className="ss-card mt-8 not-italic">
-            <p className="text-lg font-semibold text-ss-cream">{site.booking.name}</p>
-            {site.booking.email ? (
-              <p className="mt-3">
-                <a href={`mailto:${site.booking.email}`} className="text-ss-gold hover:text-ss-cream">
-                  {site.booking.email}
-                </a>
-              </p>
-            ) : null}
-            {site.booking.phone ? (
-              <p className="mt-2">
-                <a
-                  href={`tel:${site.booking.phone.replace(/\D/g, "")}`}
-                  className="text-ss-gold hover:text-ss-cream"
-                >
-                  {site.booking.phone}
-                </a>
-              </p>
-            ) : null}
-            {!site.booking.email && !site.booking.phone ? (
-              <p className="mt-4 text-sm text-ss-cream-muted">
-                Add booking email and phone in{" "}
-                <code className="text-ss-cream">src/content/site.ts</code>.
-              </p>
-            ) : null}
+            <p className="text-lg font-semibold text-ss-cream">
+              <a
+                href={site.booking.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-ss-gold hover:text-ss-cream"
+              >
+                {site.booking.representative}
+              </a>
+            </p>
+            <p className="mt-3">
+              <a href={`mailto:${site.booking.email}`} className="text-ss-gold hover:text-ss-cream">
+                {site.booking.email}
+              </a>
+            </p>
+            <p className="mt-2">
+              <a
+                href={`tel:${site.booking.phone.replace(/\D/g, "")}`}
+                className="text-ss-gold hover:text-ss-cream"
+              >
+                {site.booking.phone}
+              </a>
+            </p>
           </address>
         </div>
       </section>
