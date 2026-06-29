@@ -25,6 +25,10 @@ export const site = {
 
 export const navLinks = [
   { to: routes.home, label: "Home" },
+  { to: routes.about, label: "About" },
+  { to: routes.setlist, label: "Setlist" },
+  { to: routes.shows, label: "Shows" },
+  { to: routes.contact, label: "Contact" },
   { to: routes.epk, label: "EPK" },
 ] as const;
 

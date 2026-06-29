@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import { site } from "@/content/site";
-import { routes } from "@/lib/routes";
+import { navLinks, site } from "@/content/site";
 import { SocialLinks } from "./SocialLinks";
 
 export function Footer() {
@@ -9,22 +8,34 @@ export function Footer() {
   return (
     <footer className="border-t border-ss-border bg-ss-parchment/80">
       <div className="ss-ornament mx-auto max-w-6xl" aria-hidden />
-      <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-4 py-10 text-center sm:flex-row sm:justify-between sm:text-left">
-        <div>
-          <p className="ss-display text-2xl text-ss-brown">{site.name}</p>
-          <p className="mt-1 text-sm italic text-ss-muted">{site.tagline}</p>
-          <p className="mt-3 text-xs text-ss-muted">
-            &copy; {year} {site.name}. All rights reserved.
-          </p>
+      <div className="mx-auto max-w-6xl px-4 py-10">
+        <div className="flex flex-col items-center gap-8 text-center sm:flex-row sm:items-start sm:justify-between sm:text-left">
+          <div>
+            <p className="ss-display text-2xl text-ss-brown">{site.name}</p>
+            <p className="mt-1 text-sm italic text-ss-muted">{site.tagline}</p>
+            <p className="mt-3 text-xs text-ss-muted">
+              &copy; {year} {site.name}. All rights reserved.
+            </p>
+          </div>
+
+          <nav aria-label="Footer">
+            <ul className="flex flex-wrap justify-center gap-x-5 gap-y-2 sm:justify-end">
+              {navLinks.map((link) => (
+                <li key={link.to}>
+                  <Link
+                    to={link.to}
+                    className="text-sm font-medium text-ss-muted transition hover:text-ss-rust"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
-        <div className="flex flex-col items-center gap-4 sm:items-end">
+
+        <div className="mt-8 flex justify-center sm:justify-end">
           <SocialLinks size="sm" />
-          <Link
-            to={routes.epk}
-            className="text-sm font-medium text-ss-rust transition hover:text-ss-brown"
-          >
-            Press &amp; booking (EPK) →
-          </Link>
         </div>
       </div>
     </footer>

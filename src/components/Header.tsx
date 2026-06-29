@@ -25,13 +25,13 @@ export function Header() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-6 md:flex" aria-label="Main">
+        <nav className="hidden items-center gap-4 lg:gap-5 md:flex" aria-label="Main">
           {navLinks.map((link) => (
             <NavLink
               key={link.to}
               to={link.to}
               end={link.to === routes.home}
-              className={({ isActive }) => `text-sm uppercase tracking-wide ${navClass(isActive)}`}
+              className={({ isActive }) => `text-xs uppercase tracking-wide lg:text-sm ${navClass(isActive)}`}
             >
               {link.label}
             </NavLink>

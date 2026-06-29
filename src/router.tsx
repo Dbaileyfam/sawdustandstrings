@@ -1,6 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { HomePage } from "@/pages/HomePage";
+import { AboutPage } from "@/pages/AboutPage";
+import { SetlistPage } from "@/pages/SetlistPage";
+import { ShowsPage } from "@/pages/ShowsPage";
+import { ContactPage } from "@/pages/ContactPage";
 import { EPKPage } from "@/pages/EPKPage";
 import { NotFoundPage } from "@/pages/NotFoundPage";
 import { routes } from "@/lib/routes";
@@ -14,6 +18,10 @@ export const router = createBrowserRouter(
       element: <Layout />,
       children: [
         { index: true, element: <HomePage /> },
+        { path: "about", element: <AboutPage /> },
+        { path: "setlist", element: <SetlistPage /> },
+        { path: "shows", element: <ShowsPage /> },
+        { path: "contact", element: <ContactPage /> },
         { path: "epk", element: <EPKPage /> },
         { path: "*", element: <NotFoundPage /> },
       ],

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { usePageTitle } from "@/lib/usePageTitle";
 import { Music2 } from "lucide-react";
 import {
   bio,
@@ -21,9 +21,7 @@ function scrollToSection(id: string) {
 }
 
 export function EPKPage() {
-  useEffect(() => {
-    document.title = `${site.name} | Electronic Press Kit`;
-  }, []);
+  usePageTitle("Electronic Press Kit");
 
   return (
     <>
