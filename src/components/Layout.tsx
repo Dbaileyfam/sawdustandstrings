@@ -2,12 +2,14 @@ import { Outlet, ScrollRestoration, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
+import { WoodBackground } from "./WoodBackground";
 
 export function Layout() {
   const location = useLocation();
 
   return (
     <>
+      <WoodBackground />
       <div className="relative z-10 flex min-h-screen flex-col">
         <Header />
         <AnimatePresence mode="wait">
