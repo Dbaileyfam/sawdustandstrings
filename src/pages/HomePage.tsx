@@ -57,13 +57,22 @@ export function HomePage() {
             >
               {site.format} · {site.hometown}
             </motion.p>
-            <motion.h1
-              className="ss-display mt-4 text-5xl text-ss-cream sm:text-6xl md:text-7xl"
-              {...fadeUp}
-              transition={{ ...fadeUp.transition, delay: 0.05 }}
+            <motion.div
+              className="mt-4"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
             >
-              {site.name}
-            </motion.h1>
+              <h1 className="sr-only">{site.name}</h1>
+              <img
+                src={site.logo.src}
+                alt={site.logo.alt}
+                width={1024}
+                height={1024}
+                className="w-full max-w-[280px] drop-shadow-2xl sm:max-w-xs md:max-w-sm lg:max-w-md"
+                fetchPriority="high"
+              />
+            </motion.div>
             <motion.p
               className="ss-accent mt-5 max-w-xl text-xl text-ss-cream-muted md:text-2xl"
               {...fadeUp}

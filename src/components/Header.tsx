@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { Guitar, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { navLinks, site } from "@/content/site";
 import { routes } from "@/lib/routes";
 
@@ -25,8 +25,15 @@ export function Header() {
           className="group flex min-w-0 items-center gap-3"
           onClick={() => setOpen(false)}
         >
-          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-ss-wood to-ss-bg ring-1 ring-ss-gold/30 transition group-hover:scale-105">
-            <Guitar className="h-5 w-5 text-ss-gold" aria-hidden />
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-ss-parchment ring-1 ring-ss-gold/30 transition group-hover:scale-105">
+            <img
+              src={site.logo.src}
+              alt=""
+              aria-hidden
+              width={40}
+              height={40}
+              className="h-full w-full object-cover"
+            />
           </span>
           <span className="min-w-0 text-left">
             <span className="ss-display block truncate text-lg text-ss-cream transition group-hover:text-ss-gold sm:text-xl">

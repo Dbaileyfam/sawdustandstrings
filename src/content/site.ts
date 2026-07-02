@@ -1,9 +1,15 @@
+import logoImage from "@/assets/sawdust-and-strings-logo.png";
 import { routes } from "@/lib/routes";
 
 /** Central duo copy, links, and EPK content — update as you get assets from the band. */
 
 export const site = {
   name: "Sawdust & Strings",
+  logo: {
+    src: logoImage,
+    alt: "Sawdust & Strings — handcrafted music, built to play",
+    downloadName: "sawdust-and-strings-logo.png",
+  },
   tagline: "Timeless songs, honest harmonies, and a laid-back Americana vibe.",
   format: "Acoustic & electric guitar duo",
   description:
@@ -93,6 +99,20 @@ export const shows = [] as {
 }[];
 
 export const pressPhotos = [] as {
+  src: string;
+  alt: string;
+  downloadName: string;
+  caption: string;
+}[];
+
+export const pressLogos = [
+  {
+    src: site.logo.src,
+    alt: site.logo.alt,
+    downloadName: site.logo.downloadName,
+    caption: "Primary logo · 1024×1024 PNG",
+  },
+] as {
   src: string;
   alt: string;
   downloadName: string;

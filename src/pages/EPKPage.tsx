@@ -4,6 +4,7 @@ import {
   bio,
   epkNav,
   influences,
+  pressLogos,
   pressPhotos,
   pressQuotes,
   quickFacts,
@@ -248,6 +249,28 @@ export function EPKPage() {
               High-res photos and logos for promoters and media. Click to download.
             </p>
 
+            {pressLogos.length > 0 ? (
+              <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {pressLogos.map((logo) => (
+                  <li key={logo.src}>
+                    <figure className="overflow-hidden rounded-2xl border border-ss-border">
+                      <a href={logo.src} download={logo.downloadName}>
+                        <img
+                          src={logo.src}
+                          alt={logo.alt}
+                          className="aspect-square w-full bg-ss-parchment object-contain p-4 transition hover:scale-[1.02]"
+                          loading="lazy"
+                        />
+                      </a>
+                      <figcaption className="bg-ss-surface/80 px-3 py-2 text-sm text-ss-cream-muted">
+                        {logo.caption}
+                      </figcaption>
+                    </figure>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+
             {pressPhotos.length > 0 ? (
               <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {pressPhotos.map((photo) => (
@@ -268,7 +291,7 @@ export function EPKPage() {
                   </li>
                 ))}
               </ul>
-            ) : (
+            ) : pressLogos.length === 0 ? (
               <div className="mt-6 rounded-2xl border border-dashed border-ss-border bg-ss-surface/50 p-10 text-center">
                 <p className="text-ss-cream">Press photos coming soon.</p>
                 <p className="mt-2 text-sm text-ss-cream-muted">
@@ -276,7 +299,7 @@ export function EPKPage() {
                   list them in <code className="text-ss-cream">src/content/site.ts</code>.
                 </p>
               </div>
-            )}
+            ) : null}
           </div>
         </div>
       </section>
