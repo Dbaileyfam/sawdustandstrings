@@ -1,4 +1,4 @@
-import woodTexture from "@/assets/wood-background.jpg";
+import { getWoodBackgroundSrc } from "@/lib/woodBackgrounds";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import {
@@ -40,6 +40,7 @@ function useWoodMotionEnabled() {
 }
 
 export function WoodBackground() {
+  const woodTexture = getWoodBackgroundSrc();
   const motionEnabled = useWoodMotionEnabled();
   const mouseX = useMotionValue(
     typeof window !== "undefined" ? window.innerWidth * 0.5 : 0,
