@@ -69,7 +69,7 @@ export function HomePage() {
                 alt={site.logo.alt}
                 width={1024}
                 height={1024}
-                className="w-full max-w-[280px] drop-shadow-2xl sm:max-w-xs md:max-w-sm lg:max-w-md"
+                className="w-full max-w-[280px] rounded-full drop-shadow-2xl sm:max-w-xs md:max-w-sm lg:max-w-md"
                 fetchPriority="high"
               />
             </motion.div>

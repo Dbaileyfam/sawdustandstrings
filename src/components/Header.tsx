@@ -25,7 +25,7 @@ export function Header() {
           className="group flex min-w-0 items-center gap-3"
           onClick={() => setOpen(false)}
         >
-          <span className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-ss-parchment ring-1 ring-ss-gold/30 transition group-hover:scale-105">
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full ring-1 ring-ss-gold/30 transition group-hover:scale-105">
             <img
               src={site.logo.src}
               alt=""

@@ -258,7 +258,7 @@ export function EPKPage() {
                         <img
                           src={logo.src}
                           alt={logo.alt}
-                          className="aspect-square w-full bg-ss-parchment object-contain p-4 transition hover:scale-[1.02]"
+                          className="mx-auto aspect-square w-full max-w-xs rounded-full object-contain p-4 transition hover:scale-[1.02]"
                           loading="lazy"
                         />
                       </a>
