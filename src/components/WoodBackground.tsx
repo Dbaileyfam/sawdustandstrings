@@ -1,3 +1,4 @@
+import woodTexture from "@/assets/wood-background.jpg";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import {
@@ -54,12 +55,11 @@ export function WoodBackground() {
   const smoothX = useSpring(mouseX, springConfig);
   const smoothY = useSpring(mouseY, springConfig);
 
-  const grainShiftX = useTransform(smoothX, [0, 2000], [-42, 42]);
-  const grainShiftY = useTransform(smoothY, [0, 1200], [-28, 28]);
-  const plankShiftX = useTransform(smoothX, [0, 2000], [-18, 18]);
+  const photoShiftX = useTransform(smoothX, [0, 2000], [-24, 24]);
+  const photoShiftY = useTransform(smoothY, [0, 1200], [-16, 16]);
 
-  const spotlight = useMotionTemplate`radial-gradient(900px circle at ${smoothX}px ${smoothY}px, rgba(255, 210, 120, 0.38) 0%, rgba(212, 168, 58, 0.18) 28%, rgba(139, 90, 43, 0.08) 48%, transparent 68%)`;
-  const sheen = useMotionTemplate`radial-gradient(520px circle at ${smoothX}px ${smoothY}px, rgba(255, 245, 220, 0.14) 0%, transparent 58%)`;
+  const spotlight = useMotionTemplate`radial-gradient(900px circle at ${smoothX}px ${smoothY}px, rgba(255, 210, 120, 0.28) 0%, rgba(212, 168, 58, 0.12) 28%, rgba(139, 90, 43, 0.06) 48%, transparent 68%)`;
+  const sheen = useMotionTemplate`radial-gradient(520px circle at ${smoothX}px ${smoothY}px, rgba(255, 245, 220, 0.1) 0%, transparent 58%)`;
 
   useEffect(() => {
     document.body.classList.add("ss-has-wood-bg");
@@ -114,10 +114,15 @@ export function WoodBackground() {
 
   const scene = (
     <div className="ss-wood-scene" aria-hidden>
-      <div className="ss-wood-base" />
-      <motion.div className="ss-wood-planks" style={{ x: plankShiftX }} />
-      <motion.div className="ss-wood-grain" style={{ x: grainShiftX, y: grainShiftY }} />
-      <div className="ss-wood-knots" />
+      <motion.div
+        className="ss-wood-photo"
+        style={{
+          backgroundImage: `url(${woodTexture})`,
+          x: photoShiftX,
+          y: photoShiftY,
+        }}
+      />
+      <div className="ss-wood-tint" />
       <div className="ss-wood-warmth" />
 
       {motionEnabled ? (
