@@ -116,10 +116,8 @@
   }
 
   .ss-wood-photo {
-    inset: -4%;
     background-size: cover;
     background-position: center;
-    will-change: transform;
   }
 
   .ss-wood-tint {
