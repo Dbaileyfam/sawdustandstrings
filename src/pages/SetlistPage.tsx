@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, MapPin, Music2 } from "lucide-react";
-import { setlistHighlights, venues } from "@/content/site";
+import { ArrowRight, MapPin } from "lucide-react";
+import { setlistFull, setlistHighlights, venues } from "@/content/site";
 import { routes } from "@/lib/routes";
 import { usePageTitle } from "@/lib/usePageTitle";
 import { fadeUp } from "@/lib/motion";
 import { PageHero } from "@/components/PageHero";
+import { ExpandableSetlist } from "@/components/ExpandableSetlist";
 
 export function SetlistPage() {
   usePageTitle("Setlist");
@@ -14,29 +15,18 @@ export function SetlistPage() {
     <>
       <PageHero
         eyebrow="What we play"
-        title="Setlist highlights"
-        description="Crowd-pleasing singalongs from CCR to Tyler Childers — and plenty more where these came from."
+        title="Setlist"
+        description="Crowd-pleasing singalongs from CCR to Tyler Childers — tap below to browse the full repertoire."
       />
 
       <section className="ss-page-shell">
         <div className="mx-auto max-w-6xl">
-          <motion.ul
-            className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4"
-            {...fadeUp}
-          >
-            {setlistHighlights.map((song) => (
-              <li
-                key={song}
-                className="ss-card flex items-center gap-3 px-4 py-3 text-sm font-medium text-ss-cream"
-              >
-                <Music2 className="h-4 w-4 shrink-0 text-ss-gold" aria-hidden />
-                {song}
-              </li>
-            ))}
-          </motion.ul>
-          <p className="mt-6 text-center text-sm italic text-ss-cream-muted">
-            …and many more. Full repertoire available on request.
-          </p>
+          <motion.div {...fadeUp}>
+            <ExpandableSetlist
+              previewSongs={setlistHighlights}
+              fullSongs={setlistFull}
+            />
+          </motion.div>
         </div>
       </section>
 

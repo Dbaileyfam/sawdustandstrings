@@ -8,6 +8,7 @@ import {
   pressPhotos,
   pressQuotes,
   quickFacts,
+  setlistFull,
   setlistHighlights,
   shows,
   site,
@@ -15,6 +16,7 @@ import {
   venues,
 } from "@/content/site";
 import { SocialLinks } from "@/components/SocialLinks";
+import { ExpandableSetlist } from "@/components/ExpandableSetlist";
 
 function scrollToSection(id: string) {
   const el = document.getElementById(id);
@@ -119,22 +121,15 @@ export function EPKPage() {
         className="scroll-mt-36 border-y border-ss-border bg-ss-surface/35 px-4 py-16"
       >
         <div className="mx-auto max-w-6xl">
-          <h2 className="ss-section-heading">Sample setlist</h2>
+          <h2 className="ss-section-heading">Setlist</h2>
           <p className="mt-2 text-ss-cream-muted">
-            A selection of crowd favorites — full repertoire available on request.
+            Crowd favorites at a glance — click to view the full repertoire.
           </p>
-          <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {setlistHighlights.map((song) => (
-              <li
-                key={song}
-                className="ss-card flex items-center gap-3 px-4 py-3 text-sm font-medium text-ss-cream"
-              >
-                <Music2 className="h-4 w-4 shrink-0 text-ss-gold" aria-hidden />
-                {song}
-              </li>
-            ))}
-          </ul>
-          <p className="mt-6 text-sm italic text-ss-cream-muted">…and many more.</p>
+          <ExpandableSetlist
+            className="mt-8"
+            previewSongs={setlistHighlights}
+            fullSongs={setlistFull}
+          />
 
           <div className="mt-10">
             <h3 className="text-lg font-semibold text-ss-cream">Ideal venues</h3>
