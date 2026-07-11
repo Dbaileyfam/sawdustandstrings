@@ -33,8 +33,16 @@ export function EPKPage() {
           <p className="text-xs font-semibold uppercase tracking-[0.35em] text-ss-gold">
             Electronic Press Kit
           </p>
-          <h1 className="ss-display mt-3 text-5xl text-ss-cream sm:text-7xl">{site.name}</h1>
-          <p className="ss-accent mx-auto mt-4 max-w-2xl text-xl text-ss-cream-muted">{site.tagline}</p>
+          <h1 className="sr-only">{site.name}</h1>
+          <img
+            src={site.logo.src}
+            alt={site.logo.alt}
+            width={1024}
+            height={1024}
+            className="mx-auto mt-6 w-full max-w-[220px] rounded-full drop-shadow-2xl sm:max-w-[280px]"
+            fetchPriority="high"
+          />
+          <p className="ss-accent mx-auto mt-6 max-w-2xl text-xl text-ss-cream-muted">{site.tagline}</p>
           <div className="ss-ornament mx-auto mt-8 max-w-xs" aria-hidden />
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <button type="button" className="ss-btn-primary" onClick={() => scrollToSection("contact")}>
@@ -271,7 +279,7 @@ export function EPKPage() {
                 {pressPhotos.map((photo) => (
                   <li key={photo.src}>
                     <figure className="overflow-hidden rounded-2xl border border-ss-border">
-                      <a href={photo.src} download={photo.downloadName}>
+                      <a href={photo.src} download={photo.downloadName} aria-label={`Download: ${photo.alt}`}>
                         <img
                           src={photo.src}
                           alt={photo.alt}
@@ -279,9 +287,6 @@ export function EPKPage() {
                           loading="lazy"
                         />
                       </a>
-                      <figcaption className="bg-ss-surface/80 px-3 py-2 text-sm text-ss-cream-muted">
-                        {photo.caption}
-                      </figcaption>
                     </figure>
                   </li>
                 ))}

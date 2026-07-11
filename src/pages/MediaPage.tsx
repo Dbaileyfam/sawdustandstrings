@@ -55,9 +55,9 @@ export function MediaPage() {
                 <figure className="ss-card overflow-hidden">
                   <button
                     type="button"
-                    className="group block w-full text-left"
+                    className="group relative block w-full text-left"
                     onClick={() => setActiveIndex(index)}
-                    aria-label={`View ${photo.caption}`}
+                    aria-label={`View photo: ${photo.alt}`}
                   >
                     <img
                       src={photo.src}
@@ -66,17 +66,6 @@ export function MediaPage() {
                       loading="lazy"
                     />
                   </button>
-                  <figcaption className="flex items-center justify-between gap-3 px-4 py-3">
-                    <span className="text-sm text-ss-cream-muted">{photo.caption}</span>
-                    <a
-                      href={photo.src}
-                      download={photo.downloadName}
-                      className="inline-flex items-center gap-1.5 text-xs font-medium text-ss-gold transition hover:text-ss-cream"
-                    >
-                      <Download className="h-3.5 w-3.5" aria-hidden />
-                      Download
-                    </a>
-                  </figcaption>
                 </figure>
               </motion.li>
             ))}
@@ -93,7 +82,7 @@ export function MediaPage() {
             exit={{ opacity: 0 }}
             role="dialog"
             aria-modal="true"
-            aria-label={active.caption}
+            aria-label={active.alt}
             onClick={() => setActiveIndex(null)}
           >
             <button
@@ -118,8 +107,7 @@ export function MediaPage() {
                 alt={active.alt}
                 className="max-h-[80vh] w-auto max-w-full rounded-2xl object-contain shadow-2xl"
               />
-              <figcaption className="mt-4 flex flex-wrap items-center justify-between gap-3 text-ss-cream">
-                <span className="ss-accent text-lg">{active.caption}</span>
+              <div className="mt-4 flex justify-end">
                 <a
                   href={active.src}
                   download={active.downloadName}
@@ -128,7 +116,7 @@ export function MediaPage() {
                   <Download className="h-4 w-4" aria-hidden />
                   Download
                 </a>
-              </figcaption>
+              </div>
             </motion.figure>
           </motion.div>
         ) : null}
