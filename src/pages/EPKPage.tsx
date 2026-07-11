@@ -56,10 +56,10 @@ export function EPKPage() {
       </section>
 
       <nav
-        className="sticky top-[73px] z-40 border-b border-ss-border bg-ss-bg/90 backdrop-blur-sm"
+        className="sticky top-[73px] z-40 border-b border-ss-border/80 bg-ss-wood/90 backdrop-blur-sm"
         aria-label="EPK sections"
       >
-        <div className="mx-auto flex max-w-6xl gap-1 overflow-x-auto px-4 py-3">
+        <div className="mx-auto flex max-w-6xl justify-center gap-1 overflow-x-auto px-4 py-3">
           {epkNav.map((item) => (
             <button
               key={item.id}
