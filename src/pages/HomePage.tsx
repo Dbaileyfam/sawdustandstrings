@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Calendar, Guitar, MapPin, Music2 } from "lucide-react";
+import { ArrowRight, Calendar, Camera, Guitar, MapPin, Music2 } from "lucide-react";
 import { bio, influences, quickFacts, setlistHighlights, site } from "@/content/site";
 import { routes } from "@/lib/routes";
 import { usePageTitle } from "@/lib/usePageTitle";
@@ -19,6 +19,12 @@ const tiles = [
     title: "Shows",
     body: "Upcoming dates and where to catch them live.",
     icon: Calendar,
+  },
+  {
+    to: routes.media,
+    title: "Media",
+    body: "Studio photos of the duo in action.",
+    icon: Camera,
   },
   {
     to: routes.contact,
@@ -240,7 +246,7 @@ export function HomePage() {
           <p className="mx-auto mt-3 max-w-2xl text-center text-ss-cream-muted">
             Breweries, wineries, weddings, and listening rooms across {site.hometown}.
           </p>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {tiles.map((tile, idx) => (
               <motion.div
                 key={tile.to}

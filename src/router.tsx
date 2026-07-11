@@ -3,6 +3,7 @@ import { Layout } from "@/components/Layout";
 import { HomePage } from "@/pages/HomePage";
 import { SetlistPage } from "@/pages/SetlistPage";
 import { ShowsPage } from "@/pages/ShowsPage";
+import { MediaPage } from "@/pages/MediaPage";
 import { ContactPage } from "@/pages/ContactPage";
 import { EPKPage } from "@/pages/EPKPage";
 import { NotFoundPage } from "@/pages/NotFoundPage";
@@ -20,6 +21,7 @@ export const router = createBrowserRouter(
         { path: "about", element: <Navigate to={routes.home} replace /> },
         { path: "setlist", element: <SetlistPage /> },
         { path: "shows", element: <ShowsPage /> },
+        { path: "media", element: <MediaPage /> },
         { path: "contact", element: <ContactPage /> },
         { path: "epk", element: <EPKPage /> },
         { path: "*", element: <NotFoundPage /> },

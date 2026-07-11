@@ -1,4 +1,8 @@
 import logoImage from "@/assets/sawdust-and-strings-logo.png";
+import studioPortrait from "@/assets/media/studio-portrait.jpg";
+import studioDuo from "@/assets/media/studio-duo.jpg";
+import studioRehearsal from "@/assets/media/studio-rehearsal.jpg";
+import studioSession from "@/assets/media/studio-session.jpg";
 import { routes } from "@/lib/routes";
 
 /** Central duo copy, links, and EPK content — update as you get assets from the band. */
@@ -35,6 +39,7 @@ export const navLinks = [
   { to: routes.home, label: "Home" },
   { to: routes.setlist, label: "Setlist" },
   { to: routes.shows, label: "Shows" },
+  { to: routes.media, label: "Media" },
   { to: routes.contact, label: "Contact" },
   { to: routes.epk, label: "EPK" },
 ] as const;
@@ -163,12 +168,34 @@ export const shows = [] as {
   ticketUrl?: string;
 }[];
 
-export const pressPhotos = [] as {
-  src: string;
-  alt: string;
-  downloadName: string;
-  caption: string;
-}[];
+export const mediaPhotos = [
+  {
+    src: studioPortrait,
+    alt: "Two men, one older and one younger, smiling and posing with an electric and acoustic guitar in a music recording studio.",
+    downloadName: "sawdust-and-strings-studio-portrait.jpg",
+    caption: "Studio portrait",
+  },
+  {
+    src: studioDuo,
+    alt: "Two men smiling while holding an electric and an acoustic guitar in a music studio filled with recording equipment.",
+    downloadName: "sawdust-and-strings-studio-duo.jpg",
+    caption: "In the studio",
+  },
+  {
+    src: studioRehearsal,
+    alt: "Two men playing electric and acoustic guitars in a home music studio with drums and amplifiers in the background.",
+    downloadName: "sawdust-and-strings-studio-rehearsal.jpg",
+    caption: "Rehearsal",
+  },
+  {
+    src: studioSession,
+    alt: "Two men playing guitars, one electric and one acoustic, in a music studio with a drum kit and speakers in the background.",
+    downloadName: "sawdust-and-strings-studio-session.jpg",
+    caption: "Session",
+  },
+] as const;
+
+export const pressPhotos = [...mediaPhotos];
 
 export const pressLogos = [
   {
