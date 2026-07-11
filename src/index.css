@@ -11,15 +11,15 @@
   --color-ss-elevated: #2c241c;
   --color-ss-border: #4a3d32;
   --color-ss-cream: #f4ead5;
-  --color-ss-cream-muted: rgba(244, 234, 213, 0.62);
+  --color-ss-cream-muted: rgba(244, 234, 213, 0.86);
   --color-ss-parchment: #e8dcc4;
   --color-ss-gold: #d4a83a;
-  --color-ss-gold-muted: #a67d24;
+  --color-ss-gold-muted: #c49a3a;
   --color-ss-gold-soft: rgba(212, 168, 58, 0.14);
   --color-ss-rust: #c47a52;
   --color-ss-rust-muted: #8f5a3c;
   --color-ss-wood: #3d2b1f;
-  --color-ss-muted: rgba(244, 234, 213, 0.5);
+  --color-ss-muted: rgba(244, 234, 213, 0.72);
 }
 
 @layer base {
@@ -68,7 +68,7 @@
   }
 
   .ss-card {
-    @apply rounded-2xl border border-ss-border/70 bg-ss-elevated/45 shadow-xl backdrop-blur-md;
+    @apply rounded-2xl border border-ss-border/70 bg-ss-elevated/70 shadow-xl backdrop-blur-md;
     box-shadow:
       0 1px 0 rgba(255, 255, 255, 0.04) inset,
       0 12px 40px rgba(0, 0, 0, 0.35);
@@ -123,9 +123,9 @@
   .ss-wood-tint {
     background: linear-gradient(
       180deg,
-      rgba(22, 18, 14, 0.42) 0%,
-      rgba(22, 18, 14, 0.28) 45%,
-      rgba(22, 18, 14, 0.38) 100%
+      rgba(22, 18, 14, 0.55) 0%,
+      rgba(22, 18, 14, 0.42) 45%,
+      rgba(22, 18, 14, 0.52) 100%
     );
   }
 
