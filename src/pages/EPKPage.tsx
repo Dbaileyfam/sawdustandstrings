@@ -14,10 +14,8 @@ import {
   shows,
   site,
   stagePlot,
-  streamingLinks,
   venues,
 } from "@/content/site";
-import { SocialLinks } from "@/components/SocialLinks";
 import { ExpandableSetlist } from "@/components/ExpandableSetlist";
 
 function scrollToSection(id: string) {
@@ -157,59 +155,25 @@ export function EPKPage() {
       <section id="music" className="scroll-mt-36 px-4 py-16">
         <div className="mx-auto max-w-6xl">
           <h2 className="ss-section-heading">Music &amp; media</h2>
-          <p className="mt-2 text-ss-cream-muted">Listen and follow across platforms.</p>
+          <p className="mt-2 text-ss-cream-muted">Performance video and media for promoters.</p>
 
-          <div className="mt-8 grid gap-6 lg:grid-cols-2">
-            <div className="ss-card overflow-hidden">
-              {site.featuredVideoId ? (
-                <div className="aspect-video">
-                  <iframe
-                    title={`${site.name} featured video`}
-                    src={`https://www.youtube.com/embed/${site.featuredVideoId}`}
-                    className="h-full w-full"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-                </div>
-              ) : (
-                <div className="flex aspect-video flex-col items-center justify-center gap-3 p-8 text-center">
-                  <Music2 className="h-12 w-12 text-ss-gold" aria-hidden />
-                  <p className="text-ss-cream">Performance videos coming soon.</p>
-                  <p className="text-sm text-ss-cream-muted">
-                    Add a YouTube video ID in{" "}
-                    <code className="text-ss-cream">src/content/site.ts</code>.
-                  </p>
-                </div>
-              )}
-            </div>
-
-            <div className="ss-card p-6">
-              <h3 className="text-lg font-semibold text-ss-cream">Listen &amp; follow</h3>
-              {streamingLinks.length > 0 ? (
-                <ul className="mt-4 space-y-2">
-                  {streamingLinks.map((link) => (
-                    <li key={link.href}>
-                      <a
-                        href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="font-medium text-ss-gold transition hover:text-ss-cream"
-                      >
-                        {link.label} →
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <p className="mt-4 text-sm text-ss-cream-muted">
-                  Add streaming links in{" "}
-                  <code className="text-ss-cream">src/content/site.ts</code> when available.
-                </p>
-              )}
-              <div className="mt-6 border-t border-ss-border pt-6">
-                <SocialLinks />
+          <div className="ss-card mt-8 overflow-hidden">
+            {site.featuredVideoId ? (
+              <div className="aspect-video">
+                <iframe
+                  title={`${site.name} featured video`}
+                  src={`https://www.youtube.com/embed/${site.featuredVideoId}`}
+                  className="h-full w-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
               </div>
-            </div>
+            ) : (
+              <div className="flex aspect-video flex-col items-center justify-center gap-3 p-8 text-center">
+                <Music2 className="h-12 w-12 text-ss-gold" aria-hidden />
+                <p className="text-ss-cream">Performance videos coming soon.</p>
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -357,19 +321,16 @@ export function EPKPage() {
           <h2 className="ss-section-heading">Stage plot &amp; input list</h2>
           <p className="mt-2 text-ss-cream-muted">Technical details for sound engineers and promoters.</p>
 
-          <div className="mt-8 space-y-6">
-            <div className="ss-card p-6">
-              <div className="flex flex-wrap items-center justify-between gap-3">
-                <h3 className="text-lg font-semibold text-ss-cream">Stage plot</h3>
-                <a
-                  href={stagePlot.src}
-                  download={stagePlot.downloadName}
-                  className="ss-btn-ghost inline-flex text-sm"
-                >
-                  <Download className="h-4 w-4" aria-hidden />
-                  Download
-                </a>
-              </div>
+          <div className="mt-8 space-y-4">
+            <details className="ss-card group p-6">
+              <summary className="cursor-pointer list-none font-semibold text-ss-cream marker:content-none">
+                <span className="flex items-center justify-between gap-4">
+                  Stage plot
+                  <span className="text-sm font-normal text-ss-cream-muted group-open:hidden">
+                    Show details
+                  </span>
+                </span>
+              </summary>
               <figure className="mt-4 overflow-hidden rounded-2xl border border-ss-border bg-white">
                 <img
                   src={stagePlot.src}
@@ -378,16 +339,33 @@ export function EPKPage() {
                   loading="lazy"
                 />
               </figure>
-            </div>
+              <div className="mt-4 flex justify-end">
+                <a
+                  href={stagePlot.src}
+                  download={stagePlot.downloadName}
+                  className="ss-btn-ghost inline-flex text-sm"
+                >
+                  <Download className="h-4 w-4" aria-hidden />
+                  Download stage plot
+                </a>
+              </div>
+            </details>
 
-            <div className="ss-card p-6">
-              <h3 className="text-lg font-semibold text-ss-cream">Input list</h3>
+            <details className="ss-card group p-6">
+              <summary className="cursor-pointer list-none font-semibold text-ss-cream marker:content-none">
+                <span className="flex items-center justify-between gap-4">
+                  Input list
+                  <span className="text-sm font-normal text-ss-cream-muted group-open:hidden">
+                    Show channels
+                  </span>
+                </span>
+              </summary>
               <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm text-ss-cream-muted">
                 {inputList.map((channel) => (
                   <li key={channel}>{channel}</li>
                 ))}
               </ol>
-            </div>
+            </details>
           </div>
         </div>
       </section>

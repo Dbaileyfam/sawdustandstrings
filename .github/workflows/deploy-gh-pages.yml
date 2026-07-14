@@ -41,7 +41,8 @@ jobs:
           cp dist/404.html 404.html
           rm -rf assets
           cp -R dist/assets assets
-          cp dist/favicon.svg favicon.svg
+          cp dist/favicon.png favicon.png
+          cp dist/apple-touch-icon.png apple-touch-icon.png
           rm -rf docs
           cp -R dist docs
 
@@ -49,7 +50,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add index.html 404.html assets favicon.svg docs
+          git add index.html 404.html assets favicon.png apple-touch-icon.png docs
           git diff --staged --quiet && echo "No publish changes" && exit 0
           git commit -m "chore: publish built site for GitHub Pages"
           git push
