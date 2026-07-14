@@ -8,6 +8,7 @@ import { fadeUp } from "@/lib/motion";
 import { SocialLinks } from "@/components/SocialLinks";
 
 const promoPhoto = mediaPhotos[0];
+const duoPhoto = mediaPhotos[1];
 
 const tiles = [
   {
@@ -251,6 +252,19 @@ export function HomePage() {
             </motion.figure>
           </div>
         </div>
+
+        <motion.figure
+          className="mx-auto mt-8 max-w-3xl md:mt-10"
+          {...fadeUp}
+          transition={{ delay: 0.14 }}
+        >
+          <img
+            src={duoPhoto.src}
+            alt={duoPhoto.alt}
+            className="mx-auto h-auto w-full max-w-2xl object-contain drop-shadow-2xl"
+            loading="lazy"
+          />
+        </motion.figure>
       </section>
 
       <section className="px-4 pb-12 pt-10 md:pb-16 md:pt-12">
