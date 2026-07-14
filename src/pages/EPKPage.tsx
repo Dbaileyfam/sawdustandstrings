@@ -283,7 +283,7 @@ export function EPKPage() {
                         <img
                           src={photo.src}
                           alt={photo.alt}
-                          className="aspect-[4/3] w-full object-cover transition hover:scale-[1.02]"
+                          className="max-h-80 w-full object-contain transition hover:scale-[1.02]"
                           loading="lazy"
                         />
                       </a>

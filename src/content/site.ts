@@ -1,4 +1,5 @@
 import logoImage from "@/assets/sawdust-and-strings-logo.png";
+import promoPortrait from "@/assets/media/promo-portrait.png";
 import studioPortrait from "@/assets/media/studio-portrait.jpg";
 import studioDuo from "@/assets/media/studio-duo.jpg";
 import studioRehearsal from "@/assets/media/studio-rehearsal.jpg";
@@ -53,8 +54,8 @@ export const bio = {
     "Whether performing in breweries, wineries, restaurants, private events, weddings, or community festivals, they create the perfect soundtrack for audiences who appreciate great songs and genuine musicianship.",
   ],
   lineup: [
-    { name: "TBD", role: "Acoustic guitar & vocals" },
-    { name: "TBD", role: "Electric guitar & vocals" },
+    { name: "Pride Alldredge", role: "Acoustic guitar & vocals" },
+    { name: "Rick Kondoff", role: "Electric guitar & vocals" },
   ],
 } as const;
 
@@ -169,6 +170,12 @@ export const shows = [] as {
 }[];
 
 export const mediaPhotos = [
+  {
+    src: promoPortrait,
+    alt: "Promotional portrait of the musical duo Sawdust & Strings. Two men, one with an electric guitar and one with an acoustic guitar, sitting on tree stumps in front of a rustic wooden logo that says Sawdust & Strings Handmade Music.",
+    downloadName: "sawdust-and-strings-promo-portrait.png",
+    caption: "Promo portrait",
+  },
   {
     src: studioPortrait,
     alt: "Two men, one older and one younger, smiling and posing with an electric and acoustic guitar in a music recording studio.",
