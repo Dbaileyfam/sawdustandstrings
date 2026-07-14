@@ -209,7 +209,15 @@ export const mediaPhotos = [
   },
 ] as const;
 
-export const pressPhotos = [...mediaPhotos];
+export const pressPhotos = [
+  {
+    src: aboutDuoPhoto.src,
+    alt: aboutDuoPhoto.alt,
+    downloadName: "sawdust-and-strings-duo-performance.png",
+    caption: "Live duo cutout",
+  },
+  ...mediaPhotos,
+];
 
 export const pressLogos = [
   {
