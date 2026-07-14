@@ -182,26 +182,30 @@ export function HomePage() {
             </Link>
           </motion.div>
 
-          <div className="mt-12 grid items-start gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
-            <aside className="space-y-6">
-              <motion.div className="ss-card p-6" {...fadeUp} transition={{ delay: 0.08 }}>
-                <h3 className="text-sm font-semibold uppercase tracking-widest text-ss-gold-muted">
-                  Lineup
-                </h3>
-                <ul className="mt-4 space-y-3">
-                  {bio.lineup.map((member) => (
-                    <li
-                      key={member.role}
-                      className="flex items-baseline justify-between gap-3 border-b border-ss-border/50 pb-3 last:border-0 last:pb-0"
-                    >
-                      <span className="font-medium text-ss-cream">{member.name}</span>
-                      <span className="text-right text-sm text-ss-cream-muted">{member.role}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
+          <div className="mt-12 space-y-6">
+            <motion.div className="ss-card max-w-md p-6" {...fadeUp} transition={{ delay: 0.08 }}>
+              <h3 className="text-sm font-semibold uppercase tracking-widest text-ss-gold-muted">
+                Lineup
+              </h3>
+              <ul className="mt-4 space-y-3">
+                {bio.lineup.map((member) => (
+                  <li
+                    key={member.role}
+                    className="flex items-baseline justify-between gap-3 border-b border-ss-border/50 pb-3 last:border-0 last:pb-0"
+                  >
+                    <span className="font-medium text-ss-cream">{member.name}</span>
+                    <span className="text-right text-sm text-ss-cream-muted">{member.role}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
 
-              <motion.div className="ss-card p-6" {...fadeUp} transition={{ delay: 0.12 }}>
+            <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-stretch">
+              <motion.div
+                className="ss-card w-full max-w-sm shrink-0 p-6 sm:max-w-[16rem]"
+                {...fadeUp}
+                transition={{ delay: 0.12 }}
+              >
                 <h3 className="text-sm font-semibold uppercase tracking-widest text-ss-gold-muted">
                   Quick facts
                 </h3>
@@ -219,20 +223,20 @@ export function HomePage() {
                   ))}
                 </ul>
               </motion.div>
-            </aside>
 
-            <motion.figure
-              className="overflow-hidden rounded-[2rem] border border-ss-border/80 shadow-2xl"
-              {...fadeUp}
-              transition={{ delay: 0.1 }}
-            >
-              <img
-                src={promoPhoto.src}
-                alt={promoPhoto.alt}
-                className="h-full w-full object-cover object-top"
-                loading="lazy"
-              />
-            </motion.figure>
+              <motion.figure
+                className="w-full max-w-[14rem] overflow-hidden rounded-2xl border border-ss-border/80 shadow-xl sm:max-w-[15rem]"
+                {...fadeUp}
+                transition={{ delay: 0.1 }}
+              >
+                <img
+                  src={promoPhoto.src}
+                  alt={promoPhoto.alt}
+                  className="aspect-[3/4] h-full w-full object-cover object-top"
+                  loading="lazy"
+                />
+              </motion.figure>
+            </div>
           </div>
         </div>
 
