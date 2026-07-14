@@ -1,6 +1,7 @@
 import { usePageTitle } from "@/lib/usePageTitle";
 import { Download, Music2 } from "lucide-react";
 import {
+  aboutDuoPhoto,
   bio,
   epkNav,
   influences,
@@ -122,6 +123,15 @@ export function EPKPage() {
             </ul>
           </aside>
         </div>
+
+        <figure className="mx-auto mt-10 max-w-3xl">
+          <img
+            src={aboutDuoPhoto.src}
+            alt={aboutDuoPhoto.alt}
+            className="mx-auto h-auto w-full max-w-2xl object-contain drop-shadow-2xl"
+            loading="lazy"
+          />
+        </figure>
       </section>
 
       <section

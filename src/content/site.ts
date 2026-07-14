@@ -171,18 +171,17 @@ export const shows = [] as {
   ticketUrl?: string;
 }[];
 
+export const aboutDuoPhoto = {
+  src: duoPerformance,
+  alt: "Sawdust & Strings performing — Pride Alldredge on acoustic guitar and Rick Kondoff on electric guitar, seated on tree stumps.",
+} as const;
+
 export const mediaPhotos = [
   {
     src: promoPortrait,
     alt: "Promotional portrait of the musical duo Sawdust & Strings. Two men, one with an electric guitar and one with an acoustic guitar, sitting on tree stumps in front of a rustic wooden logo that says Sawdust & Strings Handmade Music.",
     downloadName: "sawdust-and-strings-promo-portrait.png",
     caption: "Promo portrait",
-  },
-  {
-    src: duoPerformance,
-    alt: "Sawdust & Strings performing — Pride Alldredge on acoustic guitar and Rick Kondoff on electric guitar, seated on tree stumps.",
-    downloadName: "sawdust-and-strings-duo-performance.png",
-    caption: "Live duo",
   },
   {
     src: studioPortrait,
