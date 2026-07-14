@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "postbuild": "mv dist/index.dev.html dist/index.html && cp dist/index.html dist/404.html",
+    "postbuild": "mv dist/index.dev.html dist/index.html",
     "build:pages": "VITE_BASE_PATH=/sawdustandstrings/ npm run build",
     "lint": "eslint .",
     "preview": "vite preview",
