@@ -1,4 +1,5 @@
 import logoImage from "@/assets/sawdust-and-strings-logo.png";
+import stagePlotImage from "@/assets/stage-plot.png";
 import promoPortrait from "@/assets/media/promo-portrait.png";
 import studioPortrait from "@/assets/media/studio-portrait.jpg";
 import studioDuo from "@/assets/media/studio-duo.jpg";
@@ -228,6 +229,19 @@ export const streamingLinks = [] as {
   label: string;
   href: string;
 }[];
+
+export const stagePlot = {
+  src: stagePlotImage,
+  alt: "Sawdust & Strings guitar duo stage plot — acoustic left, electric right, with input list and monitor notes for sound engineers.",
+  downloadName: "sawdust-and-strings-stage-plot.png",
+} as const;
+
+export const inputList = [
+  "Vocal 1 (Acoustic)",
+  "Acoustic Guitar (DI or Mic)",
+  "Vocal 2 (Electric)",
+  "Electric Guitar (Amp Mic or DI)",
+] as const;
 
 export const epkNav = [
   { id: "bio", label: "Bio" },

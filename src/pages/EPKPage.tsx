@@ -1,9 +1,10 @@
 import { usePageTitle } from "@/lib/usePageTitle";
-import { Music2 } from "lucide-react";
+import { Download, Music2 } from "lucide-react";
 import {
   bio,
   epkNav,
   influences,
+  inputList,
   pressLogos,
   pressPhotos,
   pressQuotes,
@@ -12,6 +13,7 @@ import {
   setlistHighlights,
   shows,
   site,
+  stagePlot,
   streamingLinks,
   venues,
 } from "@/content/site";
@@ -356,7 +358,7 @@ export function EPKPage() {
           <p className="mt-2 text-ss-cream-muted">Technical details for sound engineers and promoters.</p>
 
           <div className="mt-8 space-y-4">
-            <details className="ss-card group p-6">
+            <details className="ss-card group p-6" open>
               <summary className="cursor-pointer list-none font-semibold text-ss-cream marker:content-none">
                 <span className="flex items-center justify-between gap-4">
                   Stage plot
@@ -365,9 +367,23 @@ export function EPKPage() {
                   </span>
                 </span>
               </summary>
-              <div className="mt-4 rounded-2xl border border-dashed border-ss-border bg-ss-surface/50 p-10 text-center text-sm text-ss-cream-muted">
-                Guitar duo — acoustic and electric — two vocal mics, acoustic DI or mic, and electric amp mic or DI. Stage plot image can be
-                added to <code className="text-ss-cream">public/assets/</code>.
+              <figure className="mt-4 overflow-hidden rounded-2xl border border-ss-border bg-white">
+                <img
+                  src={stagePlot.src}
+                  alt={stagePlot.alt}
+                  className="w-full object-contain"
+                  loading="lazy"
+                />
+              </figure>
+              <div className="mt-4 flex justify-end">
+                <a
+                  href={stagePlot.src}
+                  download={stagePlot.downloadName}
+                  className="ss-btn-ghost inline-flex text-sm"
+                >
+                  <Download className="h-4 w-4" aria-hidden />
+                  Download stage plot
+                </a>
               </div>
             </details>
 
@@ -380,12 +396,11 @@ export function EPKPage() {
                   </span>
                 </span>
               </summary>
-              <ul className="mt-4 space-y-2 text-sm text-ss-cream-muted">
-                <li>· Vocal 1 (acoustic guitar &amp; vocals)</li>
-                <li>· Vocal 2 (electric guitar &amp; vocals)</li>
-                <li>· Acoustic guitar DI or mic</li>
-                <li>· Electric guitar amp mic or DI</li>
-              </ul>
+              <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm text-ss-cream-muted">
+                {inputList.map((channel) => (
+                  <li key={channel}>{channel}</li>
+                ))}
+              </ol>
             </details>
           </div>
         </div>
