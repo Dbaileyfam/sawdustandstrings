@@ -163,7 +163,7 @@ export function HomePage() {
         id="about"
         className="scroll-mt-24 border-y border-ss-border/60 bg-ss-surface/35 px-4 py-10 md:py-12"
       >
-        <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-start lg:gap-10">
+        <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-start lg:gap-8">
           <motion.div {...fadeUp}>
             <p className="text-xs font-semibold uppercase tracking-[0.35em] text-ss-gold-muted">
               The duo
@@ -198,9 +198,9 @@ export function HomePage() {
             </div>
           </motion.div>
 
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-stretch lg:flex-col xl:flex-row">
-            <div className="flex min-w-0 flex-1 flex-col gap-4">
-              <motion.div className="ss-card p-5" {...fadeUp} transition={{ delay: 0.08 }}>
+          <div className="flex flex-col items-stretch gap-4 sm:flex-row">
+            <div className="flex w-full min-w-0 max-w-[15rem] flex-col gap-4 sm:shrink-0">
+              <motion.div className="ss-card p-4" {...fadeUp} transition={{ delay: 0.08 }}>
                 <h3 className="text-sm font-semibold uppercase tracking-widest text-ss-gold-muted">
                   Lineup
                 </h3>
@@ -208,16 +208,16 @@ export function HomePage() {
                   {bio.lineup.map((member) => (
                     <li
                       key={member.role}
-                      className="flex items-baseline justify-between gap-3 border-b border-ss-border/50 pb-2.5 last:border-0 last:pb-0"
+                      className="flex flex-col gap-0.5 border-b border-ss-border/50 pb-2.5 last:border-0 last:pb-0"
                     >
                       <span className="font-medium text-ss-cream">{member.name}</span>
-                      <span className="text-right text-sm text-ss-cream-muted">{member.role}</span>
+                      <span className="text-sm text-ss-cream-muted">{member.role}</span>
                     </li>
                   ))}
                 </ul>
               </motion.div>
 
-              <motion.div className="ss-card p-5" {...fadeUp} transition={{ delay: 0.12 }}>
+              <motion.div className="ss-card p-4" {...fadeUp} transition={{ delay: 0.12 }}>
                 <h3 className="text-sm font-semibold uppercase tracking-widest text-ss-gold-muted">
                   Quick facts
                 </h3>
@@ -238,14 +238,14 @@ export function HomePage() {
             </div>
 
             <motion.figure
-              className="mx-auto w-full max-w-[11.5rem] shrink-0 overflow-hidden rounded-2xl border border-ss-border/80 shadow-xl sm:mx-0 sm:max-w-[12.5rem]"
+              className="min-w-0 flex-1 overflow-hidden rounded-2xl border border-ss-border/80 bg-ss-elevated/40 shadow-xl"
               {...fadeUp}
               transition={{ delay: 0.1 }}
             >
               <img
                 src={promoPhoto.src}
                 alt={promoPhoto.alt}
-                className="aspect-[3/4] h-full w-full object-cover object-top"
+                className="h-full w-full object-contain object-center"
                 loading="lazy"
               />
             </motion.figure>
