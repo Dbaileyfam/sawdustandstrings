@@ -89,11 +89,19 @@ export function EPKPage() {
         </div>
       </section>
 
-      <section id="bio" className="scroll-mt-36 px-4 py-16">
-        <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1fr_280px]">
+      <section id="bio" className="scroll-mt-36 px-4 py-12 md:py-14">
+        <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1fr_280px] lg:items-start lg:gap-10">
           <div>
             <h2 className="ss-section-heading">About the duo</h2>
-            <p className="mt-4 text-lg leading-relaxed text-ss-cream">{bio.short}</p>
+            <p className="mt-3 text-lg leading-relaxed text-ss-cream">{bio.short}</p>
+            <figure className="mt-5 max-w-xl">
+              <img
+                src={aboutDuoPhoto.src}
+                alt={aboutDuoPhoto.alt}
+                className="h-auto w-full object-contain drop-shadow-2xl"
+                loading="lazy"
+              />
+            </figure>
           </div>
           <aside className="ss-card h-fit p-6">
             <h3 className="text-sm font-semibold uppercase tracking-widest text-ss-gold">Lineup</h3>
@@ -123,15 +131,6 @@ export function EPKPage() {
             </ul>
           </aside>
         </div>
-
-        <figure className="mx-auto mt-10 max-w-3xl">
-          <img
-            src={aboutDuoPhoto.src}
-            alt={aboutDuoPhoto.alt}
-            className="mx-auto h-auto w-full max-w-2xl object-contain drop-shadow-2xl"
-            loading="lazy"
-          />
-        </figure>
       </section>
 
       <section
