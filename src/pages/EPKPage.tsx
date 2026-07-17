@@ -167,7 +167,33 @@ export function EPKPage() {
           <p className="mt-2 text-ss-cream-muted">Performance video and media for promoters.</p>
 
           <div className="ss-card mt-8 overflow-hidden">
-            {site.featuredVideoId ? (
+            {site.featuredVideo ? (
+              <>
+                <div className="aspect-video bg-black">
+                  <video
+                    className="h-full w-full object-contain"
+                    controls
+                    playsInline
+                    preload="metadata"
+                    poster={site.featuredVideo.poster}
+                    aria-label={site.featuredVideo.alt}
+                  >
+                    <source src={site.featuredVideo.src} type="video/mp4" />
+                  </video>
+                </div>
+                <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-4">
+                  <p className="font-semibold text-ss-cream">{site.featuredVideo.title}</p>
+                  <a
+                    href={site.featuredVideo.src}
+                    download={site.featuredVideo.downloadName}
+                    className="ss-btn-ghost inline-flex text-sm"
+                  >
+                    <Download className="h-4 w-4" aria-hidden />
+                    Download
+                  </a>
+                </div>
+              </>
+            ) : site.featuredVideoId ? (
               <div className="aspect-video">
                 <iframe
                   title={`${site.name} featured video`}

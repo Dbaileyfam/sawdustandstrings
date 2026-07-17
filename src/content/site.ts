@@ -6,6 +6,8 @@ import studioPortrait from "@/assets/media/studio-portrait.jpg";
 import studioDuo from "@/assets/media/studio-duo.jpg";
 import studioRehearsal from "@/assets/media/studio-rehearsal.jpg";
 import studioSession from "@/assets/media/studio-session.jpg";
+import betterDaysVideo from "@/assets/media/better-days.mp4";
+import betterDaysPoster from "@/assets/media/better-days-poster.jpg";
 import { routes } from "@/lib/routes";
 
 /** Central duo copy, links, and EPK content — update as you get assets from the band. */
@@ -30,6 +32,13 @@ export const site = {
     facebook: null as string | null,
   },
   featuredVideoId: null as string | null,
+  featuredVideo: {
+    src: betterDaysVideo,
+    poster: betterDaysPoster,
+    title: "Better Days",
+    alt: "Sawdust & Strings performing Better Days in the studio — electric and acoustic guitar.",
+    downloadName: "sawdust-and-strings-better-days.mp4",
+  },
   booking: {
     representative: "801 Family Studios",
     email: "booking@801familystudios.com",
@@ -175,6 +184,16 @@ export const aboutDuoPhoto = {
   src: duoPerformance,
   alt: "Sawdust & Strings performing — Pride Alldredge on acoustic guitar and Rick Kondoff on electric guitar, seated on tree stumps.",
 } as const;
+
+export const mediaVideos = [
+  {
+    src: betterDaysVideo,
+    poster: betterDaysPoster,
+    title: "Better Days",
+    alt: "Sawdust & Strings performing Better Days in the studio — electric and acoustic guitar.",
+    downloadName: "sawdust-and-strings-better-days.mp4",
+  },
+] as const;
 
 export const mediaPhotos = [
   {

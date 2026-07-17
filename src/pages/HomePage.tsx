@@ -25,7 +25,7 @@ const tiles = [
   {
     to: routes.media,
     title: "Media",
-    body: "Studio photos of the duo in action.",
+    body: "Performance video and studio photos.",
     icon: Camera,
   },
   {

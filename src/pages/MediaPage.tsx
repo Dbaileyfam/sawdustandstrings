@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Download, X } from "lucide-react";
-import { mediaPhotos } from "@/content/site";
+import { mediaPhotos, mediaVideos } from "@/content/site";
 import { usePageTitle } from "@/lib/usePageTitle";
 import { fadeUp } from "@/lib/motion";
 import { PageHero } from "@/components/PageHero";
@@ -39,12 +39,56 @@ export function MediaPage() {
       <PageHero
         eyebrow="Gallery"
         title="Media"
-        description="Studio shots of Sawdust & Strings — acoustic warmth, electric edge."
+        description="Performance video and studio shots — acoustic warmth, electric edge."
       />
 
       <section className="ss-page-shell">
         <div className="mx-auto max-w-6xl">
-          <ul className="columns-1 gap-5 sm:columns-2">
+          {mediaVideos.length > 0 ? (
+            <div className="mb-14">
+              <h2 className="ss-section-heading text-2xl md:text-3xl">Video</h2>
+              <p className="mt-2 text-ss-cream-muted">Live in the studio.</p>
+              <ul className="mt-8 grid gap-8">
+                {mediaVideos.map((video, index) => (
+                  <motion.li
+                    key={video.src}
+                    {...fadeUp}
+                    transition={{ ...fadeUp.transition, delay: index * 0.06 }}
+                  >
+                    <figure className="ss-card overflow-hidden">
+                      <div className="aspect-video bg-black">
+                        <video
+                          className="h-full w-full object-contain"
+                          controls
+                          playsInline
+                          preload="metadata"
+                          poster={video.poster}
+                          aria-label={video.alt}
+                        >
+                          <source src={video.src} type="video/mp4" />
+                        </video>
+                      </div>
+                      <figcaption className="flex flex-wrap items-center justify-between gap-3 px-5 py-4">
+                        <p className="font-semibold text-ss-cream">{video.title}</p>
+                        <a
+                          href={video.src}
+                          download={video.downloadName}
+                          className="ss-btn-ghost inline-flex text-sm"
+                        >
+                          <Download className="h-4 w-4" aria-hidden />
+                          Download
+                        </a>
+                      </figcaption>
+                    </figure>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+
+          <h2 className="ss-section-heading text-2xl md:text-3xl">Photos</h2>
+          <p className="mt-2 text-ss-cream-muted">Studio shots of the duo.</p>
+          <ul className="mt-8 columns-1 gap-5 sm:columns-2">
             {mediaPhotos.map((photo, index) => (
               <motion.li
                 key={photo.src}
