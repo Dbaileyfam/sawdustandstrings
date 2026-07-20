@@ -4,11 +4,24 @@
     <meta charset="utf-8" />
     <title>Sawdust &amp; Strings</title>
     <script type="text/javascript">
-      // SPA fallback for GitHub Pages project sites.
+      // SPA fallback for GitHub Pages on a custom domain (site root).
       // https://github.com/rafgraph/spa-github-pages
       (function () {
-        var pathSegmentsToKeep = 1;
+        var pathSegmentsToKeep = 0;
         var l = window.location;
+
+        // Break redirect loops from the old project-page 404 script.
+        if (l.search.indexOf("?/") === 0 || l.search.indexOf("&/") !== -1 || l.search.indexOf("~and~") !== -1) {
+          l.replace(
+            l.protocol +
+              "//" +
+              l.hostname +
+              (l.port ? ":" + l.port : "") +
+              "/",
+          );
+          return;
+        }
+
         l.replace(
           l.protocol +
             "//" +
