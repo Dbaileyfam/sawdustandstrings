@@ -209,6 +209,12 @@ export const shows: {
     venue: "DLC at Quarters",
     location: "8:00 – 9:30 PM",
   },
+  {
+    date: "2026-09-22",
+    dateLabel: "Sep 22",
+    venue: "The Cove Night Market",
+    location: "Daybreak, South Jordan · 7:10 – 9:00 PM",
+  },
 ];
 
 export const aboutDuoPhoto = {
