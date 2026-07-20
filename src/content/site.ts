@@ -186,6 +186,12 @@ export const shows: {
     location: "South Jordan · 11:00 AM – 1:00 PM",
   },
   {
+    date: "2026-08-15",
+    dateLabel: "Aug 15",
+    venue: "You Know You're from Ogden If Festival",
+    location: "Ogden · 1:00 – 2:00 PM",
+  },
+  {
     date: "2026-08-29",
     dateLabel: "Aug 29",
     venue: "Daybreak Farmers Market",
@@ -202,12 +208,6 @@ export const shows: {
     dateLabel: "Sep 11",
     venue: "DLC at Quarters",
     location: "8:00 – 9:30 PM",
-  },
-  {
-    date: "2026-09-22",
-    dateLabel: "Sep 22",
-    venue: "The Cove Night Market",
-    location: "Daybreak, South Jordan · 7:10 – 9:00 PM",
   },
 ];
 
