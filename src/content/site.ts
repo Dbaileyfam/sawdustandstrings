@@ -172,13 +172,44 @@ export const quickFacts = [
   { label: "Set length", value: "2–3 hours (flexible)" },
 ] as const;
 
-export const shows = [] as {
+export const shows: {
   date: string;
   dateLabel: string;
   venue: string;
   location: string;
   ticketUrl?: string;
-}[];
+}[] = [
+  {
+    date: "2026-08-08",
+    dateLabel: "Aug 8",
+    venue: "Daybreak Farmers Market",
+    location: "South Jordan · 11:00 AM – 1:00 PM",
+  },
+  {
+    date: "2026-08-29",
+    dateLabel: "Aug 29",
+    venue: "Daybreak Farmers Market",
+    location: "South Jordan · 11:00 AM – 1:00 PM",
+  },
+  {
+    date: "2026-09-08",
+    dateLabel: "Sep 8",
+    venue: "The Cove Night Market",
+    location: "Daybreak, South Jordan · 5:00 – 5:30 PM",
+  },
+  {
+    date: "2026-09-11",
+    dateLabel: "Sep 11",
+    venue: "DLC at Quarters",
+    location: "8:00 – 9:30 PM",
+  },
+  {
+    date: "2026-09-22",
+    dateLabel: "Sep 22",
+    venue: "The Cove Night Market",
+    location: "Daybreak, South Jordan · 7:10 – 9:00 PM",
+  },
+];
 
 export const aboutDuoPhoto = {
   src: duoPerformance,
