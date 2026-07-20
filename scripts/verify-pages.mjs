@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const homepage = "https://dbaileyfam.github.io/sawdustandstrings/";
+const homepage = "https://sawdustandstrings.com/";
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -38,13 +38,19 @@ async function verifyOnce() {
     );
   }
 
+  if (html.includes("/sawdustandstrings/assets/")) {
+    throw new Error(
+      "Live HTML still uses /sawdustandstrings/ asset paths; rebuild with VITE_BASE_PATH=/ for the custom domain."
+    );
+  }
+
   const jsHref = html.match(/<script[^>]+src=["']([^"']+)["']/)?.[1];
   const cssHref = html.match(/<link[^>]+href=["']([^"']+\.css)["']/)?.[1];
 
-  if (!jsHref?.includes("/sawdustandstrings/assets/")) {
+  if (!jsHref?.includes("/assets/")) {
     throw new Error(`Live HTML missing built JS path. Got: ${jsHref ?? "none"}`);
   }
-  if (!cssHref?.includes("/sawdustandstrings/assets/")) {
+  if (!cssHref?.includes("/assets/")) {
     throw new Error(`Live HTML missing built CSS path. Got: ${cssHref ?? "none"}`);
   }
 

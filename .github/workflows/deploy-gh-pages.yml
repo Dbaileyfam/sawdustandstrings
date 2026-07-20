@@ -43,6 +43,7 @@ jobs:
           cp -R dist/assets assets
           cp dist/favicon.png favicon.png
           cp dist/apple-touch-icon.png apple-touch-icon.png
+          cp dist/CNAME CNAME
           rm -rf docs
           cp -R dist docs
 
@@ -50,7 +51,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add index.html 404.html assets favicon.png apple-touch-icon.png docs
+          git add index.html 404.html assets favicon.png apple-touch-icon.png docs CNAME
           git diff --staged --quiet && echo "No publish changes" && exit 0
           git commit -m "chore: publish built site for GitHub Pages"
           git push
