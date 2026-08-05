@@ -183,7 +183,7 @@ export const shows: {
     date: "2026-08-08",
     dateLabel: "Aug 8",
     venue: "Daybreak Farmers Market",
-    location: "South Jordan · 11:00 AM – 1:00 PM",
+    location: "11274 Kestrel Rise, South Jordan UT · 11:00 AM – 1:00 PM",
   },
   {
     date: "2026-08-15",
@@ -195,13 +195,13 @@ export const shows: {
     date: "2026-08-29",
     dateLabel: "Aug 29",
     venue: "Daybreak Farmers Market",
-    location: "South Jordan · 11:00 AM – 1:00 PM",
+    location: "11274 Kestrel Rise, South Jordan UT · 11:00 AM – 1:00 PM",
   },
   {
     date: "2026-09-08",
     dateLabel: "Sep 8",
     venue: "The Cove Night Market",
-    location: "Daybreak, South Jordan · 5:00 – 5:30 PM",
+    location: "6550 W. Lake Ave, South Jordan UT · 5:00 – 5:30 PM",
   },
   {
     date: "2026-09-11",
@@ -213,7 +213,7 @@ export const shows: {
     date: "2026-09-22",
     dateLabel: "Sep 22",
     venue: "The Cove Night Market",
-    location: "Daybreak, South Jordan · 7:10 – 9:00 PM",
+    location: "6550 W. Lake Ave, South Jordan UT · 7:10 – 9:00 PM",
   },
 ];
 
