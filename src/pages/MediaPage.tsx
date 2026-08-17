@@ -47,7 +47,7 @@ export function MediaPage() {
           {mediaVideos.length > 0 ? (
             <div className="mb-14">
               <h2 className="ss-section-heading text-2xl md:text-3xl">Video</h2>
-              <p className="mt-2 text-ss-cream-muted">Live in the studio.</p>
+              <p className="mt-2 text-ss-cream-muted">Studio and live performance clips.</p>
               <ul className="mt-8 grid gap-8">
                 {mediaVideos.map((video, index) => (
                   <motion.li

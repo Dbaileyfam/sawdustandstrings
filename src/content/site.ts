@@ -8,6 +8,8 @@ import studioRehearsal from "@/assets/media/studio-rehearsal.jpg";
 import studioSession from "@/assets/media/studio-session.jpg";
 import betterDaysVideo from "@/assets/media/better-days.mp4";
 import betterDaysPoster from "@/assets/media/better-days-poster.jpg";
+import liveOutdoorsVideo from "@/assets/media/live-outdoors.mp4";
+import liveOutdoorsPoster from "@/assets/media/live-outdoors-poster.jpg";
 import { routes } from "@/lib/routes";
 
 /** Central duo copy, links, and EPK content — update as you get assets from the band. */
@@ -223,6 +225,13 @@ export const aboutDuoPhoto = {
 } as const;
 
 export const mediaVideos = [
+  {
+    src: liveOutdoorsVideo,
+    poster: liveOutdoorsPoster,
+    title: "Live outdoors",
+    alt: "Sawdust & Strings performing live outdoors — acoustic and electric guitar under a canopy.",
+    downloadName: "sawdust-and-strings-live-outdoors.mp4",
+  },
   {
     src: betterDaysVideo,
     poster: betterDaysPoster,
