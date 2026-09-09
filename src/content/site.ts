@@ -174,50 +174,97 @@ export const quickFacts = [
   { label: "Set length", value: "2–3 hours (flexible)" },
 ] as const;
 
-export const shows: {
+export type Show = {
   date: string;
   dateLabel: string;
   venue: string;
   location: string;
   ticketUrl?: string;
-}[] = [
+  /** Local 24-hour end time (`HH:mm`). After this, a same-day show moves to Past. */
+  endTime?: string;
+};
+
+export const shows: Show[] = [
   {
     date: "2026-08-08",
     dateLabel: "Aug 8",
     venue: "Daybreak Farmers Market",
     location: "11274 Kestrel Rise, South Jordan UT · 11:00 AM – 1:00 PM",
+    endTime: "13:00",
   },
   {
     date: "2026-08-15",
     dateLabel: "Aug 15",
     venue: "You Know You're from Ogden If Festival",
     location: "Ogden · 1:00 – 2:00 PM",
+    endTime: "14:00",
   },
   {
     date: "2026-08-29",
     dateLabel: "Aug 29",
     venue: "Daybreak Farmers Market",
     location: "11274 Kestrel Rise, South Jordan UT · 11:00 AM – 1:00 PM",
+    endTime: "13:00",
   },
   {
     date: "2026-09-08",
     dateLabel: "Sep 8",
     venue: "The Cove Night Market",
     location: "6550 W. Lake Ave, South Jordan UT · 5:00 – 5:30 PM",
+    endTime: "17:30",
   },
   {
     date: "2026-09-11",
     dateLabel: "Sep 11",
     venue: "DLC at Quarters",
     location: "8:00 – 9:30 PM",
+    endTime: "21:30",
   },
   {
     date: "2026-09-22",
     dateLabel: "Sep 22",
     venue: "The Cove Night Market",
     location: "6550 W. Lake Ave, South Jordan UT · 7:10 – 9:00 PM",
+    endTime: "21:00",
   },
 ];
+
+function localTodayISO(now = new Date()) {
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+function localMinutes(now: Date) {
+  return now.getHours() * 60 + now.getMinutes();
+}
+
+function endTimeMinutes(endTime: string) {
+  const [hours, minutes] = endTime.split(":").map(Number);
+  if (!Number.isFinite(hours) || !Number.isFinite(minutes)) return null;
+  return hours * 60 + minutes;
+}
+
+function isUpcomingShow(show: Show, today: string, now: Date) {
+  if (show.date > today) return true;
+  if (show.date < today) return false;
+  if (!show.endTime) return true;
+  const endMinutes = endTimeMinutes(show.endTime);
+  return endMinutes == null || localMinutes(now) <= endMinutes;
+}
+
+/** Upcoming through the set; after the end time (or the calendar day), dates move to Past. */
+export function partitionShows(allShows: Show[] = shows, now = new Date()) {
+  const today = localTodayISO(now);
+  const upcoming = allShows
+    .filter((show) => isUpcomingShow(show, today, now))
+    .sort((a, b) => a.date.localeCompare(b.date));
+  const past = allShows
+    .filter((show) => !isUpcomingShow(show, today, now))
+    .sort((a, b) => b.date.localeCompare(a.date));
+  return { upcoming, past };
+}
 
 export const aboutDuoPhoto = {
   src: duoPerformance,

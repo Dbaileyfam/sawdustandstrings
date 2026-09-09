@@ -12,12 +12,13 @@ import {
   quickFacts,
   setlistFull,
   setlistHighlights,
-  shows,
+  partitionShows,
   site,
   stagePlot,
   venues,
 } from "@/content/site";
 import { ExpandableSetlist } from "@/components/ExpandableSetlist";
+import { ShowGrid } from "@/components/ShowCard";
 
 function scrollToSection(id: string) {
   const el = document.getElementById(id);
@@ -26,6 +27,7 @@ function scrollToSection(id: string) {
 
 export function EPKPage() {
   usePageTitle("Electronic Press Kit");
+  const { upcoming, past } = partitionShows();
 
   return (
     <>
@@ -306,45 +308,29 @@ export function EPKPage() {
       </section>
 
       <section id="shows" className="scroll-mt-36 px-4 py-16">
-        <div className="mx-auto max-w-6xl">
-          <h2 className="ss-section-heading">Upcoming shows</h2>
-          {shows.length > 0 ? (
-            <ul className="mt-8 grid gap-4 sm:grid-cols-2">
-              {shows.map((show) => (
-                <li key={`${show.date}-${show.venue}`} className="ss-card flex gap-5 p-5">
-                  <time
-                    dateTime={show.date}
-                    className="flex h-20 w-20 shrink-0 flex-col items-center justify-center rounded-2xl bg-ss-gold/15 text-ss-gold"
-                  >
-                    <span className="text-xs font-bold uppercase">
-                      {show.dateLabel.split(" ")[0]}
-                    </span>
-                    <span className="ss-display text-2xl leading-none">
-                      {show.dateLabel.split(" ")[1]?.replace(",", "")}
-                    </span>
-                  </time>
-                  <div>
-                    <h3 className="text-lg font-semibold text-ss-cream">{show.venue}</h3>
-                    <p className="text-sm text-ss-cream-muted">{show.location}</p>
-                    {show.ticketUrl ? (
-                      <a
-                        href={show.ticketUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-2 inline-block text-sm font-medium text-ss-gold hover:text-ss-cream"
-                      >
-                        Tickets →
-                      </a>
-                    ) : null}
-                  </div>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="mt-6 text-ss-cream-muted">
-              No dates listed yet — contact the duo to book a show.
-            </p>
-          )}
+        <div className="mx-auto max-w-6xl space-y-14">
+          <div>
+            <h2 className="ss-section-heading">Upcoming shows</h2>
+            {upcoming.length > 0 ? (
+              <div className="mt-8">
+                <ShowGrid items={upcoming} />
+              </div>
+            ) : (
+              <p className="mt-6 text-ss-cream-muted">
+                No dates listed yet — contact the duo to book a show.
+              </p>
+            )}
+          </div>
+
+          {past.length > 0 ? (
+            <div id="past-shows">
+              <h2 className="ss-section-heading">Past shows</h2>
+              <p className="mt-2 text-ss-cream-muted">Recent dates Sawdust & Strings has played.</p>
+              <div className="mt-8">
+                <ShowGrid items={past} past />
+              </div>
+            </div>
+          ) : null}
         </div>
       </section>
 

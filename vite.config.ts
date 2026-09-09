@@ -2,13 +2,27 @@ import path from "node:path";
 import { defineConfig, type Plugin } from "vite";
 import react from "@vitejs/plugin-react";
 
+function isDevHtmlRequest(url = "") {
+  const pathname = url.split("?")[0] ?? "";
+  if (pathname === "/" || pathname === "/index.html") return true;
+  if (
+    pathname.startsWith("/@") ||
+    pathname.startsWith("/src") ||
+    pathname.startsWith("/node_modules") ||
+    pathname.includes(".")
+  ) {
+    return false;
+  }
+  return pathname.length > 0;
+}
+
 function devIndexPlugin(): Plugin {
   return {
     name: "dev-index",
     apply: "serve",
     configureServer(server) {
       server.middlewares.use((req, _res, next) => {
-        if (req.url === "/" || req.url === "/index.html") {
+        if (isDevHtmlRequest(req.url)) {
           req.url = "/index.dev.html";
         }
         next();
