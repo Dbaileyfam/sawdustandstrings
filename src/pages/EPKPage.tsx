@@ -395,25 +395,31 @@ export function EPKPage() {
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="ss-section-heading">Booking &amp; press contact</h2>
           <p className="mt-4 text-ss-cream-muted">
-            {site.name} is represented by {site.booking.representative} for breweries,
-            wineries, weddings, private events, and media inquiries.
+            For breweries, wineries, weddings, private events, and media inquiries, contact{" "}
+            {site.booking.representative}.
           </p>
           <address className="ss-card mt-8 not-italic">
             <p className="text-lg font-semibold text-ss-cream">
-              <a
-                href={site.booking.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-ss-gold hover:text-ss-cream"
-              >
-                {site.booking.representative}
-              </a>
+              {site.booking.website ? (
+                <a
+                  href={site.booking.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-ss-gold hover:text-ss-cream"
+                >
+                  {site.booking.representative}
+                </a>
+              ) : (
+                site.booking.representative
+              )}
             </p>
-            <p className="mt-3">
-              <a href={`mailto:${site.booking.email}`} className="text-ss-gold hover:text-ss-cream">
-                {site.booking.email}
-              </a>
-            </p>
+            {site.booking.email ? (
+              <p className="mt-3">
+                <a href={`mailto:${site.booking.email}`} className="text-ss-gold hover:text-ss-cream">
+                  {site.booking.email}
+                </a>
+              </p>
+            ) : null}
             <p className="mt-2">
               <a
                 href={`tel:${site.booking.phone.replace(/\D/g, "")}`}

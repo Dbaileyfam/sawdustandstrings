@@ -42,10 +42,10 @@ export const site = {
     downloadName: "sawdust-and-strings-better-days.mp4",
   },
   booking: {
-    representative: "801 Family Studios",
-    email: "booking@801familystudios.com",
-    phone: "(801) 918-6782",
-    website: "https://www.801familystudios.com/",
+    representative: "Rick Kondoff",
+    email: null as string | null,
+    phone: "(614) 563-5792",
+    website: null as string | null,
   },
 } as const;
 

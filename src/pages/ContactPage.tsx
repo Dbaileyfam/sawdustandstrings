@@ -21,27 +21,33 @@ export function ContactPage() {
       <section className="ss-page-shell">
         <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-2">
           <motion.div className="ss-card p-8" {...fadeUp}>
-            <h2 className="text-lg font-semibold text-ss-cream">Represented by</h2>
+            <h2 className="text-lg font-semibold text-ss-cream">Booking contact</h2>
             <p className="mt-2 text-sm text-ss-cream-muted">
-              {site.name} is represented by {site.booking.representative} for festivals,
-              venues, private events, and media inquiries.
+              For festivals, venues, private events, and media inquiries, contact{" "}
+              {site.booking.representative}.
             </p>
             <address className="mt-6 not-italic">
               <p className="text-lg font-semibold text-ss-cream">
-                <a
-                  href={site.booking.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-ss-gold hover:text-ss-cream"
-                >
-                  {site.booking.representative}
-                </a>
+                {site.booking.website ? (
+                  <a
+                    href={site.booking.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-ss-gold hover:text-ss-cream"
+                  >
+                    {site.booking.representative}
+                  </a>
+                ) : (
+                  site.booking.representative
+                )}
               </p>
-              <p className="mt-3">
-                <a href={`mailto:${site.booking.email}`} className="text-ss-gold hover:text-ss-cream">
-                  {site.booking.email}
-                </a>
-              </p>
+              {site.booking.email ? (
+                <p className="mt-3">
+                  <a href={`mailto:${site.booking.email}`} className="text-ss-gold hover:text-ss-cream">
+                    {site.booking.email}
+                  </a>
+                </p>
+              ) : null}
               <p className="mt-2">
                 <a
                   href={`tel:${site.booking.phone.replace(/\D/g, "")}`}
