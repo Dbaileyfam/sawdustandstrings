@@ -56,7 +56,13 @@ export function MediaPage() {
                     transition={{ ...fadeUp.transition, delay: index * 0.06 }}
                   >
                     <figure className="ss-card overflow-hidden">
-                      <div className="aspect-video bg-black">
+                      <div
+                        className={
+                          video.portrait
+                            ? "mx-auto aspect-[9/16] w-full max-w-sm bg-black"
+                            : "aspect-video bg-black"
+                        }
+                      >
                         <video
                           className="h-full w-full object-contain"
                           controls

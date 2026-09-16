@@ -10,6 +10,8 @@ import betterDaysVideo from "@/assets/media/better-days.mp4";
 import betterDaysPoster from "@/assets/media/better-days-poster.jpg";
 import liveOutdoorsVideo from "@/assets/media/live-outdoors.mp4";
 import liveOutdoorsPoster from "@/assets/media/live-outdoors-poster.jpg";
+import liveDlcQuartersVideo from "@/assets/media/live-dlc-quarters.mp4";
+import liveDlcQuartersPoster from "@/assets/media/live-dlc-quarters-poster.jpg";
 import { routes } from "@/lib/routes";
 
 /** Central duo copy, links, and EPK content — update as you get assets from the band. */
@@ -43,7 +45,7 @@ export const site = {
   },
   booking: {
     representative: "Rick Kondoff",
-    email: null as string | null,
+    email: "Rickkondoff@gmail.com",
     phone: "(614) 563-5792",
     website: null as string | null,
   },
@@ -103,6 +105,7 @@ export const setlistFull = [
   "Feathered Indians",
   "Fortunate Son",
   "Free Fallin'",
+  "Give Me Three Steps",
   "Harvest Moon",
   "Have You Ever Seen the Rain",
   "Heart of Gold",
@@ -273,11 +276,20 @@ export const aboutDuoPhoto = {
 
 export const mediaVideos = [
   {
+    src: liveDlcQuartersVideo,
+    poster: liveDlcQuartersPoster,
+    title: "Give Me Three Steps",
+    alt: "Sawdust & Strings performing Lynyrd Skynyrd's Give Me Three Steps live at DLC at Quarters — Rick Kondoff on electric guitar and Pride Alldredge on acoustic guitar.",
+    downloadName: "sawdust-and-strings-live-dlc-quarters.mp4",
+    portrait: true,
+  },
+  {
     src: liveOutdoorsVideo,
     poster: liveOutdoorsPoster,
     title: "Live outdoors",
     alt: "Sawdust & Strings performing live outdoors — acoustic and electric guitar under a canopy.",
     downloadName: "sawdust-and-strings-live-outdoors.mp4",
+    portrait: false,
   },
   {
     src: betterDaysVideo,
@@ -285,6 +297,7 @@ export const mediaVideos = [
     title: "Better Days",
     alt: "Sawdust & Strings performing Better Days in the studio — electric and acoustic guitar.",
     downloadName: "sawdust-and-strings-better-days.mp4",
+    portrait: false,
   },
 ] as const;
 

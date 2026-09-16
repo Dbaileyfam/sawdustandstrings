@@ -6,6 +6,7 @@ import {
   epkNav,
   influences,
   inputList,
+  mediaVideos,
   pressLogos,
   pressPhotos,
   pressQuotes,
@@ -168,34 +169,46 @@ export function EPKPage() {
           <h2 className="ss-section-heading">Music &amp; media</h2>
           <p className="mt-2 text-ss-cream-muted">Performance video and media for promoters.</p>
 
-          <div className="ss-card mt-8 overflow-hidden">
-            {site.featuredVideo ? (
-              <>
-                <div className="aspect-video bg-black">
-                  <video
-                    className="h-full w-full object-contain"
-                    controls
-                    playsInline
-                    preload="metadata"
-                    poster={site.featuredVideo.poster}
-                    aria-label={site.featuredVideo.alt}
-                  >
-                    <source src={site.featuredVideo.src} type="video/mp4" />
-                  </video>
-                </div>
-                <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-4">
-                  <p className="font-semibold text-ss-cream">{site.featuredVideo.title}</p>
-                  <a
-                    href={site.featuredVideo.src}
-                    download={site.featuredVideo.downloadName}
-                    className="ss-btn-ghost inline-flex text-sm"
-                  >
-                    <Download className="h-4 w-4" aria-hidden />
-                    Download
-                  </a>
-                </div>
-              </>
-            ) : site.featuredVideoId ? (
+          {mediaVideos.length > 0 ? (
+            <ul className="mt-8 grid gap-8">
+              {mediaVideos.map((video) => (
+                <li key={video.src}>
+                  <figure className="ss-card overflow-hidden">
+                    <div
+                      className={
+                        video.portrait
+                          ? "mx-auto aspect-[9/16] w-full max-w-sm bg-black"
+                          : "aspect-video bg-black"
+                      }
+                    >
+                      <video
+                        className="h-full w-full object-contain"
+                        controls
+                        playsInline
+                        preload="metadata"
+                        poster={video.poster}
+                        aria-label={video.alt}
+                      >
+                        <source src={video.src} type="video/mp4" />
+                      </video>
+                    </div>
+                    <figcaption className="flex flex-wrap items-center justify-between gap-3 px-5 py-4">
+                      <p className="font-semibold text-ss-cream">{video.title}</p>
+                      <a
+                        href={video.src}
+                        download={video.downloadName}
+                        className="ss-btn-ghost inline-flex text-sm"
+                      >
+                        <Download className="h-4 w-4" aria-hidden />
+                        Download
+                      </a>
+                    </figcaption>
+                  </figure>
+                </li>
+              ))}
+            </ul>
+          ) : site.featuredVideoId ? (
+            <div className="ss-card mt-8 overflow-hidden">
               <div className="aspect-video">
                 <iframe
                   title={`${site.name} featured video`}
@@ -205,13 +218,15 @@ export function EPKPage() {
                   allowFullScreen
                 />
               </div>
-            ) : (
+            </div>
+          ) : (
+            <div className="ss-card mt-8 overflow-hidden">
               <div className="flex aspect-video flex-col items-center justify-center gap-3 p-8 text-center">
                 <Music2 className="h-12 w-12 text-ss-gold" aria-hidden />
                 <p className="text-ss-cream">Performance videos coming soon.</p>
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </section>
 
