@@ -12,6 +12,10 @@ import liveOutdoorsVideo from "@/assets/media/live-outdoors.mp4";
 import liveOutdoorsPoster from "@/assets/media/live-outdoors-poster.jpg";
 import liveDlcQuartersVideo from "@/assets/media/live-dlc-quarters.mp4";
 import liveDlcQuartersPoster from "@/assets/media/live-dlc-quarters-poster.jpg";
+import liveDlcQuarters2Video from "@/assets/media/live-dlc-quarters-2.mp4";
+import liveDlcQuarters2Poster from "@/assets/media/live-dlc-quarters-2-poster.jpg";
+import liveDlcQuarters3Video from "@/assets/media/live-dlc-quarters-3.mp4";
+import liveDlcQuarters3Poster from "@/assets/media/live-dlc-quarters-3-poster.jpg";
 import { routes } from "@/lib/routes";
 
 /** Central duo copy, links, and EPK content — update as you get assets from the band. */
@@ -275,6 +279,22 @@ export const aboutDuoPhoto = {
 } as const;
 
 export const mediaVideos = [
+  {
+    src: liveDlcQuarters3Video,
+    poster: liveDlcQuarters3Poster,
+    title: "Live at DLC at Quarters",
+    alt: "Sawdust & Strings performing live at DLC at Quarters — Rick Kondoff on electric guitar and Pride Alldredge on acoustic guitar.",
+    downloadName: "sawdust-and-strings-live-dlc-quarters-3.mp4",
+    portrait: true,
+  },
+  {
+    src: liveDlcQuarters2Video,
+    poster: liveDlcQuarters2Poster,
+    title: "Live at DLC at Quarters",
+    alt: "Sawdust & Strings performing live at DLC at Quarters — Rick Kondoff on electric guitar and Pride Alldredge on acoustic guitar.",
+    downloadName: "sawdust-and-strings-live-dlc-quarters-2.mp4",
+    portrait: true,
+  },
   {
     src: liveDlcQuartersVideo,
     poster: liveDlcQuartersPoster,
