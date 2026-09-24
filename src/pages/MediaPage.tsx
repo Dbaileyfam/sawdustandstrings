@@ -39,7 +39,7 @@ export function MediaPage() {
       <PageHero
         eyebrow="Gallery"
         title="Media"
-        description="Performance video and studio shots — acoustic warmth, electric edge."
+        description="Performance video, live shots, and studio photos — acoustic warmth, electric edge."
       />
 
       <section className="ss-page-shell">
@@ -93,7 +93,7 @@ export function MediaPage() {
           ) : null}
 
           <h2 className="ss-section-heading text-2xl md:text-3xl">Photos</h2>
-          <p className="mt-2 text-ss-cream-muted">Studio shots of the duo.</p>
+          <p className="mt-2 text-ss-cream-muted">Live and studio shots of the duo.</p>
           <ul className="mt-8 columns-1 gap-5 sm:columns-2">
             {mediaPhotos.map((photo, index) => (
               <motion.li

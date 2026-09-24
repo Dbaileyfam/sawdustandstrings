@@ -6,6 +6,9 @@ import studioPortrait from "@/assets/media/studio-portrait.jpg";
 import studioDuo from "@/assets/media/studio-duo.jpg";
 import studioRehearsal from "@/assets/media/studio-rehearsal.jpg";
 import studioSession from "@/assets/media/studio-session.jpg";
+import liveCoveNightMarket from "@/assets/media/live-cove-night-market.jpg";
+import liveCoveNightMarketDock from "@/assets/media/live-cove-night-market-dock.jpg";
+import liveCoveNightMarketEvening from "@/assets/media/live-cove-night-market-evening.jpg";
 import betterDaysVideo from "@/assets/media/better-days.mp4";
 import betterDaysPoster from "@/assets/media/better-days-poster.jpg";
 import liveOutdoorsVideo from "@/assets/media/live-outdoors.mp4";
@@ -322,6 +325,24 @@ export const mediaVideos = [
 ] as const;
 
 export const mediaPhotos = [
+  {
+    src: liveCoveNightMarket,
+    alt: "Sawdust & Strings performing at The Cove Night Market in South Jordan — acoustic and electric guitar under a white canopy on a dock, with a pond, mountains, and neighborhood homes at dusk.",
+    downloadName: "sawdust-and-strings-live-cove-night-market.jpg",
+    caption: "The Cove Night Market",
+  },
+  {
+    src: liveCoveNightMarketDock,
+    alt: "Sawdust & Strings on the dock at The Cove Night Market — Pride Alldredge on acoustic guitar and Rick Kondoff on electric guitar under a white tent, with houses and a rising moon behind them.",
+    downloadName: "sawdust-and-strings-live-cove-night-market-dock.jpg",
+    caption: "Live at The Cove",
+  },
+  {
+    src: liveCoveNightMarketEvening,
+    alt: "Sawdust & Strings playing an evening set at The Cove Night Market under a white canopy, with a nearly full moon over the neighborhood skyline.",
+    downloadName: "sawdust-and-strings-live-cove-night-market-evening.jpg",
+    caption: "Evening set at The Cove",
+  },
   {
     src: promoPortrait,
     alt: "Promotional portrait of the musical duo Sawdust & Strings. Two men, one with an electric guitar and one with an acoustic guitar, sitting on tree stumps in front of a rustic wooden logo that says Sawdust & Strings Handmade Music.",
